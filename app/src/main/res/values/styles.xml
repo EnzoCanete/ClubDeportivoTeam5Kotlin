@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="botonPrincipal">
-        <item name="android:background">@drawable/fondo_redondeado_acento</item>
+        <item name="android:background">@drawable/fondo_botones</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">32dp</item>
@@ -10,5 +10,14 @@
         <item name="android:textAlignment">center</item>
     </style>
     <style name="botonRegresar"> </style>
+
+    <style name="editTextBase" parent="@style/Widget.AppCompat.EditText">
+
+        <item name="android:background">@drawable/fondo_edittext</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textColor">@color/texto_color_principal</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:paddingLeft">4dp</item>
+    </style>
 
 </resources>

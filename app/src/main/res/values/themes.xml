@@ -5,6 +5,7 @@
         <item name="android:windowBackground">@color/fondo_uno</item>
         <item name="android:textColor">@color/texto_color_principal</item>
         <item name="buttonStyle">@style/botonPrincipal</item>
+        <item name="editTextStyle">@style/editTextBase</item>
     </style>
     <style name="Theme.ClubDeportivoTeam5Kotlin" parent="Base.Theme.ClubDeportivoTeam5Kotlin" />
 </resources>
