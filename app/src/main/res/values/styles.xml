@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="botonPrincipal">
+        <item name="android:background">@drawable/fondo_redondeado_acento</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:radius">100dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="botonRegresar"> </style>
+
+</resources>
