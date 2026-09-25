@@ -4,4 +4,5 @@
     <string name="title">Title</string>
     <string name="label">Label</string>
     <string name="value">value</string>
+    <string name="labelText">Label</string>
 </resources>
