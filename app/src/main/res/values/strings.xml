@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ClubDeportivoTeam5Kotlin</string>
+    <string name="boton_texto">Botón</string>
+    <string name="title">Title</string>
+    <string name="label">Label</string>
+    <string name="value">value</string>
 </resources>
