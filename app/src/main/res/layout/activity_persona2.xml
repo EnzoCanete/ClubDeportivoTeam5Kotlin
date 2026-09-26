@@ -2,12 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/persona1"
+    android:id="@+id/persona2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Persona1"
+    tools:context=".Persona2"
     android:orientation="vertical"
-    android:background="@drawable/fondo_login"
+    android:background="@drawable/fondo_circulo_izquierda"
     android:gravity="center_vertical"
     >
 
@@ -22,102 +22,81 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Datos Personales"
+            android:text="Datos Membresía"
             android:textSize="25sp"
             android:textStyle="bold"
             android:gravity="top|center"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre:"
+            android:text="Tipo:"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:gravity="left"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spnTipo"
+            android:background="@drawable/fondo_edittext"
+            android:padding="10sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Actividad:"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:gravity="left"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spnActividad"
+            android:background="@drawable/fondo_edittext"
+            android:padding="10sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horario:"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:gravity="left"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spnHorario"
+            android:background="@drawable/fondo_edittext"
+            android:padding="10sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Inicio:"
             android:textSize="18sp"
             android:textStyle="normal"
             android:gravity="left"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtNombre"
-            android:textSize="18sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Apellido:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtApellido"
-            android:textSize="18sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DNI:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtDni"
-            android:textSize="18sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Correo:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtCorreo"
-            android:textSize="18sp"
-            android:inputType="textEmailAddress"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cargar Apto Físico y vencimiento:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <EditText
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtApto"
-                android:textSize="18sp"/>
-            <ImageButton
-                android:layout_width="80dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="6dp"
-                android:background="@drawable/fondo_botones"
-                android:src="@drawable/upload"
-                android:id="@+id/btnCargarapto"/>
-        </LinearLayout>
+            android:id="@+id/txtFechainicio"
+            android:inputType="datetime"
+            android:background="@drawable/fondo_edittext"
+            android:padding="10sp"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Continuar"
+            android:text="Registrar"
             android:textStyle="normal"
             android:textSize="18sp"
-            android:id="@+id/btnContinuardatos"/>
+            android:id="@+id/btnRegistrar"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="< Volver al inicio"
+            android:text="< Regresar"
             android:textStyle="normal"
             android:textSize="18sp"
             android:background="@android:color/transparent"
-            android:id="@+id/btnVolverinicio"/>
+            android:id="@+id/btnRegresar"/>
     </LinearLayout>
 </LinearLayout>
