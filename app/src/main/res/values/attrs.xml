@@ -11,7 +11,10 @@
             <enum name="email" value="3" />
             <enum name="password" value="4" />
         </attr>
+    </declare-styleable>
 
+    <declare-styleable name="FormCuerpoView">
+        <attr name="tituloText" format="string"/>
     </declare-styleable>
 
 </resources>

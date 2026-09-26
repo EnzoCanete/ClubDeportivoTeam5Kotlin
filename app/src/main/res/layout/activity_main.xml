@@ -5,52 +5,41 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".Persona1"
+    android:orientation="vertical"
     android:background="@drawable/fondo_login"
-    tools:context=".MainActivity"
     android:gravity="center_vertical"
-
-    >
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp">
 
     <com.example.clubdeportivoteam5kotlin.FormCuerpoView
-        android:layout_width="260dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-
-        android:layout_marginStart="75dp">
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/title"
-            android:textAlignment="center" />
+        android:layout_gravity="center_horizontal"
+        app:tituloText="Login"
+        >
 
         <com.example.clubdeportivoteam5kotlin.FormSlot
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Usuario"/>
+                app:labelText="usuario:"/>
 
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Contraseña"
-                app:inputType="password"
-                android:autofillHints="password"
-                />
+                app:labelText="Contraseña:"/>
 
         </com.example.clubdeportivoteam5kotlin.FormSlot>
 
-
         <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/boton_texto" />
-
+            android:layout_height="wrap_content"
+            android:text="login"
+        />
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
-
 </LinearLayout>

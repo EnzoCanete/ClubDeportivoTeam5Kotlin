@@ -2,21 +2,20 @@ package com.example.clubdeportivoteam5kotlin
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 
 class FormCuerpoView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-): LinearLayout(context, attrs) {
+) : LinearLayout(context, attrs) {
+
+    private val tituloForm = TextView(context)
 
     init {
-        layoutParams = LayoutParams(
-            LayoutParams.MATCH_PARENT,
-            LayoutParams.WRAP_CONTENT
-        )
-
         orientation = VERTICAL
 
         setPadding(
@@ -25,10 +24,40 @@ class FormCuerpoView @JvmOverloads constructor(
             24.dp(),
             24.dp()
         )
+
         setBackgroundResource(R.drawable.fondo_form_cuerpo)
+
+        addView(tituloForm)
+
+        val params = LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            LayoutParams.WRAP_CONTENT
+        )
+
+        params.bottomMargin = 20.dp()
+
+        tituloForm.textSize = 24f
+        tituloForm.gravity = Gravity.CENTER
+
+        tituloForm.layoutParams = params
+
+
+        context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.FormCuerpoView,
+            0,
+            0
+        ).apply {
+            try {
+                tituloForm.text = getString(
+                    R.styleable.FormCuerpoView_tituloText
+                )
+            } finally {
+                recycle()
+            }
+        }
     }
 
-    // Sobreescribe addView para que agregue un gap entre los elementos hijo que no sean el primero
     override fun addView(
         child: View?,
         index: Int,
@@ -36,13 +65,16 @@ class FormCuerpoView @JvmOverloads constructor(
     ) {
         super.addView(child, index, params)
 
-        if (child != null && childCount > 1) {
+        if (child != null && child != tituloForm && childCount > 2) {
+
+            val anterior = getChildAt(childCount - 2)
+
             val layoutParams =
-                child.layoutParams as MarginLayoutParams
+                anterior.layoutParams as MarginLayoutParams
 
-            layoutParams.topMargin = 24.dp()
+            layoutParams.bottomMargin = 24.dp()
 
-            child.layoutParams = layoutParams
+            anterior.layoutParams = layoutParams
         }
     }
 

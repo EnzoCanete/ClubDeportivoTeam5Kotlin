@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name=".Persona1"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Persona2"

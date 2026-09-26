@@ -14,11 +14,11 @@
     <style name="editTextBase" parent="@style/Widget.AppCompat.EditText">
 
         <item name="android:background">@drawable/fondo_edittext</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="android:minHeight">36dp</item>
         <item name="android:textColor">@color/texto_color_principal</item>
         <item name="android:textSize">13sp</item>
         <item name="android:paddingLeft">12dp</item>
-        <item name="android:minWidth">400dp</item>
+
     </style>
 
     

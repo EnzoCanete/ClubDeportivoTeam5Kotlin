@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/persona1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,115 +9,61 @@
     android:orientation="vertical"
     android:background="@drawable/fondo_login"
     android:gravity="center_vertical"
-    >
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp">
 
-    <LinearLayout
-        android:layout_width="350dp"
+    <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:orientation="vertical"
-        android:background="@drawable/fondo_form_cuerpo"
-        android:padding="20dp">
+        app:tituloText="Datos Personales"
+        >
 
-        <TextView
+        <com.example.clubdeportivoteam5kotlin.FormSlot
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Datos Personales"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:gravity="top|center"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombre:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtNombre"
-            android:textSize="18sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Apellido:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtApellido"
-            android:textSize="18sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DNI:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtDni"
-            android:textSize="18sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Correo:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtCorreo"
-            android:textSize="18sp"
-            android:inputType="textEmailAddress"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cargar Apto Físico y vencimiento:"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            android:gravity="left"/>
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <EditText
-                android:layout_width="220dp"
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:id="@+id/campoNombre"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtApto"
-                android:textSize="18sp"/>
-            <ImageButton
-                android:layout_width="80dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="6dp"
-                android:background="@drawable/fondo_botones"
-                android:src="@drawable/upload"
-                android:id="@+id/btnCargarapto"/>
-        </LinearLayout>
+                app:labelText="Nombre:"
+                />
+
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:id="@+id/campoApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Apellido:"
+                />
+
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:id="@+id/campoDNI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="DNI:"
+                />
+
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:id="@+id/campoCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Correo:"/>
+
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:id="@+id/campoAptoFisico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Apto Fisico y vencimiento:"/>
+
+        </com.example.clubdeportivoteam5kotlin.FormSlot>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="Continuar"
             android:textStyle="normal"
-            android:textSize="18sp"
             android:id="@+id/btnContinuardatos"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="< Volver al inicio"
-            android:textStyle="normal"
-            android:textSize="18sp"
-            android:background="@android:color/transparent"
-            android:id="@+id/btnVolverinicio"/>
-    </LinearLayout>
+    </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>
