@@ -32,6 +32,11 @@
             android:name=".Persona3"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Vencimientos" />
+        <activity
+            android:name=".Recordatorios"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

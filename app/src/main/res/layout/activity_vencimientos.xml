@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    android:id="@+id/vencimientos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_pantalla_vencimientos"
@@ -14,13 +15,68 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tituloText="Listado Deudores">
+        app:tituloText="Cuotas Vencidas">
 
         <com.example.clubdeportivoteam5kotlin.FormSlot
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="DNI"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@color/gris"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nombre"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@color/gris"/>/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="F. Vencimiento"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@color/gris"/>/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvVencimientos"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+
         </com.example.clubdeportivoteam5kotlin.FormSlot>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enviar recordatorio"
+            android:id="@+id/btnRecordatorio"
+            android:textSize="18sp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver al inicio"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:id="@+id/btnVolver"/>
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>
