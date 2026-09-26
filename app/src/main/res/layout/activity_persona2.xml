@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Persona2"
     android:orientation="vertical"
-    android:background="@drawable/fondo_circulo_izquierda"
+    android:background="@drawable/fondo_pantalla_persona"
     android:gravity="center_vertical"
     >
 
@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="< Regresar"
+            android:text="Regresar"
             android:textStyle="normal"
             android:textSize="18sp"
             android:background="@android:color/transparent"

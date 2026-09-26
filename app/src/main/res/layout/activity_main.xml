@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Persona1"
     android:orientation="vertical"
-    android:background="@drawable/fondo_login"
+    android:background="@drawable/fondo_pantalla_login"
     android:gravity="center_vertical"
     android:paddingRight="24dp"
     android:paddingLeft="24dp">
@@ -16,8 +14,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tituloText="Login"
-        >
+        app:tituloText="Login">
 
         <com.example.clubdeportivoteam5kotlin.FormSlot
             android:layout_width="match_parent"
@@ -26,20 +23,19 @@
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="usuario:"/>
+                app:labelText="usuario:" />
 
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Contraseña:"/>
+                app:labelText="Contraseña:" />
 
         </com.example.clubdeportivoteam5kotlin.FormSlot>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="login"
-        />
+            android:text="login" />
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>

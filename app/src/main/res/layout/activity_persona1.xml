@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/persona1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Persona1"
-    android:orientation="vertical"
-    android:background="@drawable/fondo_login"
+    android:background="@drawable/fondo_pantalla_persona"
     android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:paddingLeft="20dp">
+    android:visibility="visible"
+    tools:context=".Persona1">
 
     <com.example.clubdeportivoteam5kotlin.FormCuerpoView
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tituloText="Datos Personales"
-        >
+        app:tituloText="Datos Personales">
 
         <com.example.clubdeportivoteam5kotlin.FormSlot
             android:layout_width="match_parent"
@@ -27,43 +27,40 @@
                 android:id="@+id/campoNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Nombre:"
-                />
+                app:labelText="Nombre:" />
 
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:id="@+id/campoApellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Apellido:"
-                />
+                app:labelText="Apellido:" />
 
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:id="@+id/campoDNI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="DNI:"
-                />
+                app:labelText="DNI:" />
 
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:id="@+id/campoCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Correo:"/>
+                app:labelText="Correo:" />
 
             <com.example.clubdeportivoteam5kotlin.InputConLabel
                 android:id="@+id/campoAptoFisico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Apto Fisico y vencimiento:"/>
+                app:labelText="Apto Fisico y vencimiento:" />
 
         </com.example.clubdeportivoteam5kotlin.FormSlot>
 
         <Button
+            android:id="@+id/btnContinuardatos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Continuar"
-            android:textStyle="normal"
-            android:id="@+id/btnContinuardatos"/>
+            android:textStyle="normal" />
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>

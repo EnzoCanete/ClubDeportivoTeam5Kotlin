@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:width="350dp"
+        android:height="350dp"
+        android:gravity="right|center_horizontal"
+        android:right="-150dp"
+        android:top="40dp">
+
+        <shape android:shape="oval">
+            <solid android:color="@color/acento_uno" />
+        </shape>
+    </item>
+
+    <item
+        android:width="350dp"
+        android:height="350dp"
+        android:gravity="bottom|center_horizontal"
+        android:left="-375dp"
+        android:bottom="40dp">
+
+        <shape android:shape="oval">
+            <solid android:color="@color/acento_uno" />
+        </shape>
+    </item>
+
+</layer-list>

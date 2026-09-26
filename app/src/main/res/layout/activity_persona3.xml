@@ -8,7 +8,9 @@
     tools:context=".Persona3"
     android:orientation="vertical"
     android:gravity="top"
-    android:padding="80dp">
+    android:padding="80dp"
+    android:background="@color/fondo_uno"
+    >
 
     <ImageView
         android:layout_width="250dp"
@@ -32,7 +34,4 @@
         android:textStyle="normal"
         android:textSize="20sp"
         android:id="@+id/btnMenuprincipal"/>
-
-
-
 </LinearLayout>
