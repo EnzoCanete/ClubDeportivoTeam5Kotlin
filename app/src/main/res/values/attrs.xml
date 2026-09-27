@@ -17,4 +17,9 @@
         <attr name="tituloText" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="MenuItem">
+        <attr name="icono" format="reference" />
+        <attr name="menuTitulo" format="string" />
+    </declare-styleable>
+
 </resources>

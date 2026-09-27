@@ -25,7 +25,7 @@ class FormCuerpoView @JvmOverloads constructor(
             24.dp()
         )
 
-        setBackgroundResource(R.drawable.fondo_form_cuerpo)
+        setBackgroundResource(R.drawable.fondo_view_form_cuerpo)
 
         addView(tituloForm)
 

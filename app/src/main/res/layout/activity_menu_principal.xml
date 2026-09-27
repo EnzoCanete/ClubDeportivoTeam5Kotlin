@@ -10,17 +10,63 @@
     android:paddingLeft="24dp"
     android:paddingRight="24dp">
 
-    <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:tituloText="menu">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
 
-        <com.example.clubdeportivoteam5kotlin.FormSlot
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.example.clubdeportivoteam5kotlin.MenuItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icono="@drawable/icono_crear_carnet"
+            app:menuTitulo="Crear&#10;carnet"
+            android:layout_marginEnd="10dp"/>
 
-        </com.example.clubdeportivoteam5kotlin.FormSlot>
+        <com.example.clubdeportivoteam5kotlin.MenuItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icono="@drawable/icono_tabla"
+            app:menuTitulo="Listado vencidos" />
 
-    </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.clubdeportivoteam5kotlin.MenuItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icono="@drawable/icono_registrar_asistencia"
+            app:menuTitulo="Registrar asistencia"
+            android:layout_marginEnd="10dp"
+            />
+
+        <com.example.clubdeportivoteam5kotlin.MenuItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icono="@drawable/icono_registro_persona"
+            app:menuTitulo="Registrar Persona" />
+
+    </LinearLayout>
+
+
+    <com.example.clubdeportivoteam5kotlin.MenuItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icono="@drawable/icono_pago"
+        app:menuTitulo="Cargar Pago"
+        android:layout_marginTop="10dp"
+        />
+
 </LinearLayout>
+
