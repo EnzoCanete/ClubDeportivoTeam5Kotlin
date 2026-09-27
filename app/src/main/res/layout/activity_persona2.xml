@@ -27,7 +27,7 @@
             android:text="Tipo:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:gravity="start"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             android:text="Actividad:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:gravity="start"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:text="Horario:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:gravity="start"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,14 +66,17 @@
             android:text="Fecha de Inicio:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:labelFor="@+id/txtFechainicio"
+/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtFechainicio"
             android:inputType="datetime"
             android:background="@drawable/fondo_view_edittext"
-            android:padding="10sp"/>
+            android:padding="10sp"
+
+            />
         </com.example.clubdeportivoteam5kotlin.FormSlot>
 
         <LinearLayout
