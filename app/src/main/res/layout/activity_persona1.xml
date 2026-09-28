@@ -11,49 +11,49 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:visibility="visible"
-    tools:context=".Persona1">
+    tools:context=".ui.activities.Persona1Activity">
 
-    <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+    <com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:tituloText="Datos Personales">
 
-        <com.example.clubdeportivoteam5kotlin.FormSlot
+        <com.example.clubdeportivoteam5kotlin.ui.components.FormSlot
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <com.example.clubdeportivoteam5kotlin.ui.components.InputConLabel
                 android:id="@+id/campoNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:labelText="Nombre:" />
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <com.example.clubdeportivoteam5kotlin.ui.components.InputConLabel
                 android:id="@+id/campoApellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:labelText="Apellido:" />
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <com.example.clubdeportivoteam5kotlin.ui.components.InputConLabel
                 android:id="@+id/campoDNI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:labelText="DNI:" />
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <com.example.clubdeportivoteam5kotlin.ui.components.InputConLabel
                 android:id="@+id/campoCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:labelText="Correo:" />
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <com.example.clubdeportivoteam5kotlin.ui.components.InputConLabel
                 android:id="@+id/campoAptoFisico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:labelText="Apto Fisico y vencimiento:" />
 
-        </com.example.clubdeportivoteam5kotlin.FormSlot>
+        </com.example.clubdeportivoteam5kotlin.ui.components.FormSlot>
 
         <Button
             android:id="@+id/btnContinuardatos"
@@ -62,5 +62,5 @@
             android:text="Continuar"
             android:textStyle="normal" />
 
-    </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+    </com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView>
 </LinearLayout>

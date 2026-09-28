@@ -5,12 +5,11 @@
     android:id="@+id/Recordatorios"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Recordatorios"
+    tools:context=".ui.activities.RecordatoriosActivity"
     android:orientation="vertical"
     android:gravity="top"
     android:padding="80dp"
-    android:background="@color/fondo_uno"
-    >
+    android:background="@color/fondo_uno">
 
     <ImageView
         android:layout_width="250dp"

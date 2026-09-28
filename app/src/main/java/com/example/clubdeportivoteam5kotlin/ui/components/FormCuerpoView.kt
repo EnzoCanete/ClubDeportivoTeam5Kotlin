@@ -1,12 +1,12 @@
-package com.example.clubdeportivoteam5kotlin
+package com.example.clubdeportivoteam5kotlin.ui.components
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.example.clubdeportivoteam5kotlin.R
 
 class FormCuerpoView @JvmOverloads constructor(
     context: Context,
@@ -41,7 +41,6 @@ class FormCuerpoView @JvmOverloads constructor(
 
         tituloForm.layoutParams = params
 
-
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.FormCuerpoView,
@@ -58,22 +57,13 @@ class FormCuerpoView @JvmOverloads constructor(
         }
     }
 
-    override fun addView(
-        child: View?,
-        index: Int,
-        params: ViewGroup.LayoutParams?
-    ) {
-        super.addView(child, index, params)
+    override fun addView(child: View?) {
+        super.addView(child)
 
         if (child != null && child != tituloForm && childCount > 2) {
-
             val anterior = getChildAt(childCount - 2)
-
-            val layoutParams =
-                anterior.layoutParams as MarginLayoutParams
-
+            val layoutParams = anterior.layoutParams as MarginLayoutParams
             layoutParams.bottomMargin = 24.dp()
-
             anterior.layoutParams = layoutParams
         }
     }

@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/fondo_pantalla_login"
+    android:background="@drawable/fondo_pantalla_persona"
     android:gravity="center_vertical"
-    android:paddingRight="24dp"
-    android:paddingLeft="24dp">
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    tools:context=".ui.activities.MainActivity">
 
-    <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+    <com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tituloText="Login">
+        app:tituloText="Inicio Sesion">
 
-        <com.example.clubdeportivoteam5kotlin.FormSlot
+        <com.example.clubdeportivoteam5kotlin.ui.components.FormSlot
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <com.example.clubdeportivoteam5kotlin.ui.components.InputConLabel
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="usuario:" />
+                app:labelText="Usuario:" />
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <com.example.clubdeportivoteam5kotlin.ui.components.InputConLabel
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintText="Formato Email"
+                app:inputType="password"
                 app:labelText="Contraseña:" />
 
-        </com.example.clubdeportivoteam5kotlin.FormSlot>
+        </com.example.clubdeportivoteam5kotlin.ui.components.FormSlot>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/boton_texto" />
+            android:text="Ingresar"
+            android:textStyle="normal" />
 
-    </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+    </com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView>
 </LinearLayout>

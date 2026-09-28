@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,18 +9,16 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingLeft="24dp"
-    android:paddingRight="24dp">
-
-
+    android:paddingRight="24dp"
+    tools:context=".ui.activities.MenuPrincipalActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        >
+        android:layout_marginBottom="10dp">
 
-        <com.example.clubdeportivoteam5kotlin.MenuItem
+        <com.example.clubdeportivoteam5kotlin.ui.components.MenuItem
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -27,7 +26,7 @@
             app:menuTitulo="Crear&#10;carnet"
             android:layout_marginEnd="10dp"/>
 
-        <com.example.clubdeportivoteam5kotlin.MenuItem
+        <com.example.clubdeportivoteam5kotlin.ui.components.MenuItem
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,16 +40,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.example.clubdeportivoteam5kotlin.MenuItem
+        <com.example.clubdeportivoteam5kotlin.ui.components.MenuItem
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:icono="@drawable/icono_registrar_asistencia"
             app:menuTitulo="Registrar asistencia"
-            android:layout_marginEnd="10dp"
-            />
+            android:layout_marginEnd="10dp"/>
 
-        <com.example.clubdeportivoteam5kotlin.MenuItem
+        <com.example.clubdeportivoteam5kotlin.ui.components.MenuItem
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,14 +57,11 @@
 
     </LinearLayout>
 
-
-    <com.example.clubdeportivoteam5kotlin.MenuItem
+    <com.example.clubdeportivoteam5kotlin.ui.components.MenuItem
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:icono="@drawable/icono_pago"
         app:menuTitulo="Cargar Pago"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>
-

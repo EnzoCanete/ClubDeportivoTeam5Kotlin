@@ -1,4 +1,4 @@
-package com.example.clubdeportivoteam5kotlin
+package com.example.clubdeportivoteam5kotlin.ui.components
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-
+import com.example.clubdeportivoteam5kotlin.R
 
 class MenuItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-): LinearLayout(context, attrs) {
+) : LinearLayout(context, attrs) {
     private val icon: ImageView
     private val title: TextView
 
@@ -46,7 +46,5 @@ class MenuItem @JvmOverloads constructor(
                 recycle()
             }
         }
-
     }
-
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,19 +9,20 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:paddingRight="24dp"
+    tools:context=".ui.activities.Pagos1Activity">
 
-    <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+    <com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         app:tituloText="pagos">
 
-        <com.example.clubdeportivoteam5kotlin.FormSlot
+        <com.example.clubdeportivoteam5kotlin.ui.components.FormSlot
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </com.example.clubdeportivoteam5kotlin.FormSlot>
+        </com.example.clubdeportivoteam5kotlin.ui.components.FormSlot>
 
-    </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+    </com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView>
 </LinearLayout>
