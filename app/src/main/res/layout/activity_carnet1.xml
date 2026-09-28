@@ -7,8 +7,8 @@
     android:background="@drawable/fondo_pantalla_carnet"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:paddingLeft="23dp"
+    android:paddingRight="23dp">
 
     <com.example.clubdeportivoteam5kotlin.FormCuerpoView
         android:layout_width="match_parent"
