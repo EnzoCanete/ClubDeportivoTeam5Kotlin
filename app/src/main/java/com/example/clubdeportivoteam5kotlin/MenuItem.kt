@@ -16,6 +16,9 @@ class MenuItem @JvmOverloads constructor(
     private val title: TextView
 
     init {
+        isClickable = true
+        isFocusable = true
+
         LayoutInflater.from(context).inflate(
             R.layout.menu_item,
             this,
@@ -46,7 +49,11 @@ class MenuItem @JvmOverloads constructor(
                 recycle()
             }
         }
-
+    }
+    fun setOnMenuClickListener(action: () -> Unit) {
+        setOnClickListener {
+            action()
+        }
     }
 
 }
