@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -41,7 +41,7 @@
                     android:text="Nombre"
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:background="@color/gris"/>/>
+                    android:background="@color/gris"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                     android:text="F. Vencimiento"
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:background="@color/gris"/>/>
+                    android:background="@color/gris"/>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -61,22 +61,27 @@
 
 
         </com.example.clubdeportivoteam5kotlin.FormSlot>
-
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enviar recordatorio"
-            android:id="@+id/btnRecordatorio"
-            android:textSize="18sp"/>
+            android:orientation="vertical">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Volver al inicio"
-            android:textStyle="normal"
-            android:textSize="16sp"
-            android:background="@android:color/transparent"
-            android:id="@+id/btnVolver"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enviar recordatorio"
+                android:textStyle="normal"
+                android:id="@+id/btnRegistrar"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Regresar"
+                android:textStyle="normal"
+                android:background="@android:color/transparent"
+                android:id="@+id/btnRegresar"/>
+        </LinearLayout>
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>

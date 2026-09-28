@@ -27,7 +27,7 @@
             android:text="Tipo:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:gravity="start"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             android:text="Actividad:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:gravity="start"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:text="Horario:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:gravity="start"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             android:text="Fecha de Inicio:"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:gravity="left"/>
+            android:gravity="start"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,7 +86,6 @@
             android:layout_height="wrap_content"
             android:text="Registrar"
             android:textStyle="normal"
-            android:textSize="18sp"
             android:id="@+id/btnRegistrar"/>
 
         <Button
@@ -95,7 +94,6 @@
             android:layout_marginTop="12dp"
             android:text="Regresar"
             android:textStyle="normal"
-            android:textSize="18sp"
             android:background="@android:color/transparent"
             android:id="@+id/btnRegresar"/>
         </LinearLayout>
