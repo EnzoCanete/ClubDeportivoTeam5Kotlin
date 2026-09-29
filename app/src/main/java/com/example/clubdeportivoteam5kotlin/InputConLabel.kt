@@ -15,11 +15,11 @@ class InputConLabel @JvmOverloads constructor(
     private val label: TextView
     private val input: EditText
 
-    //var text: String
-    //    get() = input.text.toString()
-    //    set(value) {
-    //        input.setText(value)
-    //    }
+    var text: String
+        get() = input.text.toString()
+        set(value) {
+            input.setText(value)
+        }
 
     init {
         orientation = VERTICAL
