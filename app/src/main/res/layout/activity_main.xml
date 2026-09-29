@@ -37,6 +37,7 @@
         </com.example.clubdeportivoteam5kotlin.ui.components.FormSlot>
 
         <Button
+            android:id="@+id/btnIngresar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingresar"

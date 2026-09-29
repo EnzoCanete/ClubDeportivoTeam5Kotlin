@@ -19,6 +19,7 @@
         android:layout_marginBottom="10dp">
 
         <com.example.clubdeportivoteam5kotlin.ui.components.MenuItem
+            android:id="@+id/btnCrearCarnet"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

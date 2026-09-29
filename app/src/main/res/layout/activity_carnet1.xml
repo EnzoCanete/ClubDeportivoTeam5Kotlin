@@ -1,28 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_pantalla_carnet"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
-    android:paddingLeft="23dp"
-    android:paddingRight="23dp"
+    android:fillViewport="true"
     tools:context=".ui.activities.Carnet1Activity">
 
-    <com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:tituloText="menu">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="45dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="30dp">
 
-        <com.example.clubdeportivoteam5kotlin.ui.components.FormSlot
+        <!-- CONTENEDOR DEL CARNET DE SOCIO -->
+        <com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="657dp"
+            app:tituloText="Carnet Digital">
 
-        </com.example.clubdeportivoteam5kotlin.ui.components.FormSlot>
+            <com.example.clubdeportivoteam5kotlin.ui.components.FormSlot
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    </com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView>
-</LinearLayout>
+                <!-- ENCABEZADO DEL CARNET -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CLUB DEPORTIVO TEAM 5"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Socio Oficial"
+                            android:textColor="@color/texto_color_secundario"
+                            android:textSize="12sp"
+                            android:layout_gravity="center_horizontal"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- LÍNEA DIVISORA -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/bordes" />
+
+                <!-- SECCIÓN: CUADRO FOTO + DATOS DEL SOCIO -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <!-- CUADRO PARA FOTO DEL SOCIO -->
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="140dp"
+                        android:background="@drawable/bg_foto_frame"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <ImageView
+                            android:id="@+id/imgFotoSocio"
+                            android:layout_width="85dp"
+                            android:layout_height="85dp"
+                            android:contentDescription="Foto de perfil del socio"
+                            android:src="@drawable/icono_alumnos" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="FOTO SOCIO"
+                            android:textColor="@color/texto_color_secundario"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- CUADRO DE DATOS DEL SOCIO -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre y Apellido:"
+                            android:textColor="@color/texto_color_secundario"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/lblNombreSocio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:text="Juan Pérez"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DNI:"
+                            android:textColor="@color/texto_color_secundario"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/lblDniSocio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:text="12.345.678"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="N° de Socio:"
+                            android:textColor="@color/texto_color_secundario"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/lblNumSocio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SOC-2024-0042"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- LÍNEA DIVISORA -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/bordes" />
+
+                <!-- SECCIÓN: CÓDIGO QR Y CÓDIGO DE BARRAS -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <!-- CUADRO CÓDIGO QR -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/fondo_view_edittext"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Acceso QR"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imgCodigoQR"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:contentDescription="Código QR del carnet"
+                            android:src="@drawable/ic_qr_placeholder" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Escaneo rápido"
+                            android:textColor="@color/texto_color_secundario"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+
+                    <!-- CUADRO CÓDIGO DE BARRAS  -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/fondo_view_edittext"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Código de Barras"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imgCodigoBarras"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:contentDescription="Código de barras del carnet"
+                            android:src="@drawable/ic_barcode_placeholder" />
+
+                        <TextView
+                            android:id="@+id/lblCodigoBarrasNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="7890123456789"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.example.clubdeportivoteam5kotlin.ui.components.FormSlot>
+
+            <!-- BOTONES DE ACCIÓN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnImprimirCarnet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Imprimir / Guardar Carnet"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnRegresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                android:text="Regresar al Menú"
+                android:textColor="@color/texto_color_principal" />
+
+        </com.example.clubdeportivoteam5kotlin.ui.components.FormCuerpoView>
+
+    </LinearLayout>
+</ScrollView>
