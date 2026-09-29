@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_pantalla_asistencias"
-    android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingLeft="24dp"
     android:paddingRight="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
         <com.example.clubdeportivoteam5kotlin.MenuItem
             android:layout_width="match_parent"
@@ -31,4 +32,13 @@
             app:menuTitulo="Alumno" />
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:text="Regresar"
+        android:textSize="22sp"
+        android:layout_marginBottom="18dp"/>
 </LinearLayout>

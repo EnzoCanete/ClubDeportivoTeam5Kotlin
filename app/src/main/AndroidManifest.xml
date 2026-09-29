@@ -20,11 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MenuPrincipal"
-            android:exported="true"
-            />
-
+        <activity
+            android:name=".MenuPrincipal"
+            android:exported="true" />
         <activity
             android:name=".Persona1"
             android:exported="true"
@@ -37,14 +35,16 @@
             android:name=".Persona3"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity android:name=".Vencimientos" />
         <activity android:name=".Asistencias1" />
         <activity android:name=".Carnet1" />
-        <activity android:name=".Pagos1"/>
-
+        <activity android:name=".Pagos1" />
         <activity
             android:name=".Recordatorios"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Asistencias2Activity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
