@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pagosQr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_pantalla_pagos"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
+
+    <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:tituloText="Pago QR">
+
+        <com.example.clubdeportivoteam5kotlin.FormSlot
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Monto:"
+                app:inputType="number"
+                android:id="@+id/pagosMontoQr"
+                />
+        </com.example.clubdeportivoteam5kotlin.FormSlot>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/continuarPagoQr"
+            android:text="Continuar"/>
+
+
+    </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+</LinearLayout>
