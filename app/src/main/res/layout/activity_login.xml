@@ -35,7 +35,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/boton_texto" />
+            android:text="Ingresar" />
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    android:id="@+id/asistencias1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_pantalla_asistencias"
@@ -10,17 +11,24 @@
     android:paddingLeft="24dp"
     android:paddingRight="24dp">
 
-    <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:tituloText="asistencias menu">
+        android:orientation="vertical">
 
-        <com.example.clubdeportivoteam5kotlin.FormSlot
+        <com.example.clubdeportivoteam5kotlin.MenuItem
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/asistProfesor"
+            app:icono="@drawable/icono_profesor"
+            app:menuTitulo="Profesor" />
 
-        </com.example.clubdeportivoteam5kotlin.FormSlot>
+        <com.example.clubdeportivoteam5kotlin.MenuItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuListadoVencidos"
+            app:icono="@drawable/icono_alumnos"
+            app:menuTitulo="Alumno" />
 
-    </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+    </LinearLayout>
 </LinearLayout>

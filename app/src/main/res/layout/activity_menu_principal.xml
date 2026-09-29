@@ -1,72 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    android:id="@+id/menuPrincipal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_pantalla_principal"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:background="@drawable/fondo_pantalla_principal">
 
+    <!-- Barra superior -->
+    <!-- Barra superior -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="24dp">
 
+        <com.example.clubdeportivoteam5kotlin.BotonIcono
+            android:id="@+id/botonNotificaciones"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@color/fondo_uno"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Acciones"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
 
-        <com.example.clubdeportivoteam5kotlin.MenuItem
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:icono="@drawable/icono_crear_carnet"
-            app:menuTitulo="Crear&#10;carnet"
-            android:layout_marginEnd="10dp"/>
-
-        <com.example.clubdeportivoteam5kotlin.MenuItem
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:icono="@drawable/icono_tabla"
-            app:menuTitulo="Listado vencidos" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <com.example.clubdeportivoteam5kotlin.MenuItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/menuCrearCarnet"
+                android:layout_marginEnd="10dp"
+                app:icono="@drawable/icono_crear_carnet"
+                app:menuTitulo="Crear&#10;carnet" />
+
+            <com.example.clubdeportivoteam5kotlin.MenuItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/menuListadoVencidos"
+                app:icono="@drawable/icono_tabla"
+                app:menuTitulo="Listado vencidos" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.example.clubdeportivoteam5kotlin.MenuItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/menuRegistrarAsistencia"
+                android:layout_marginEnd="10dp"
+                app:icono="@drawable/icono_registrar_asistencia"
+                app:menuTitulo="Registrar asistencia" />
+
+            <com.example.clubdeportivoteam5kotlin.MenuItem
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/menuRegistrarPersonas"
+                app:icono="@drawable/icono_registro_persona"
+                app:menuTitulo="Registrar Persona" />
+
+        </LinearLayout>
+
+        <com.example.clubdeportivoteam5kotlin.MenuItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuCargarPago"
+            android:layout_marginTop="10dp"
+            app:icono="@drawable/icono_pago"
+            app:menuTitulo="Cargar Pago" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.example.clubdeportivoteam5kotlin.MenuItem
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:icono="@drawable/icono_registrar_asistencia"
-            app:menuTitulo="Registrar asistencia"
-            android:layout_marginEnd="10dp"
-            />
-
-        <com.example.clubdeportivoteam5kotlin.MenuItem
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:icono="@drawable/icono_registro_persona"
-            app:menuTitulo="Registrar Persona" />
-
-    </LinearLayout>
-
-
-    <com.example.clubdeportivoteam5kotlin.MenuItem
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:icono="@drawable/icono_pago"
-        app:menuTitulo="Cargar Pago"
-        android:layout_marginTop="10dp"
-        />
-
-</LinearLayout>
-
+</FrameLayout>
