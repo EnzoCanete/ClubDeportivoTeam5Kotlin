@@ -14,13 +14,63 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tituloText="pagos">
+        app:tituloText="Registrar Pago">
 
         <com.example.clubdeportivoteam5kotlin.FormSlot
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="DNI:"
+                app:inputType="number"
+                android:id="@+id/DniPagos"
+                />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioOpcionesPagos"
+                >
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Efectivo"
+                    android:id="@+id/radioEfectivo"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Debito"
+                    android:id="@+id/radioDebito"
+
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Credito"
+                    android:id="@+id/radioCredito"
+
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="QR"
+                    android:id="@+id/radioQr"
+
+                    />
+
+            </RadioGroup>
+
         </com.example.clubdeportivoteam5kotlin.FormSlot>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/continuarPagoUno"
+            android:text="Continuar"/>
+
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>

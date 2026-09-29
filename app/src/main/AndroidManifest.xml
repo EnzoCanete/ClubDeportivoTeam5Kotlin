@@ -32,13 +32,20 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Persona3"
+            android:name=".AvisoExito"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".Vencimientos" />
         <activity android:name=".Asistencias1" />
         <activity android:name=".Carnet1" />
+
         <activity android:name=".Pagos1" />
+        <activity android:name=".PagosEfectivo"/>
+        <activity android:name=".PagosTarjeta"/>
+        <activity android:name=".PagosQR"/>
+        <activity android:name=".PagosEscanearQR"/>
+
+        
         <activity
             android:name=".Recordatorios"
             android:exported="false"
@@ -47,6 +54,7 @@
             android:name=".Asistencias2Activity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

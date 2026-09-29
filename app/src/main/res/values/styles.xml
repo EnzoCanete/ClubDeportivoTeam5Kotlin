@@ -21,7 +21,10 @@
 
     </style>
 
-    
+    <style name="radioboton" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:colorAccent">@color/acento_uno</item>
+    </style>
+
     <style name="formCuerpo">
         <item name="android:background">@drawable/fondo_view_edittext</item>
     </style>
