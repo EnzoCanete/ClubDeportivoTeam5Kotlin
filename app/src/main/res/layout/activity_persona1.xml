@@ -51,7 +51,7 @@
                 android:id="@+id/campoAptoFisico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Apto Fisico y vencimiento:" />
+                app:labelText="Apto Físico (obligatorio):" />
 
         </com.example.clubdeportivoteam5kotlin.FormSlot>
 

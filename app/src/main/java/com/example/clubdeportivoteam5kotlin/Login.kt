@@ -22,7 +22,7 @@ class Login : AppCompatActivity() {
             insets
         }
 
-        // ponytail: credenciales simuladas declaradas en entrega-01, sin sesión ni roles
+        // Credenciales simuladas declaradas en entrega-01, sin sesión ni roles
         findViewById<Button>(R.id.btnIngresar).setOnClickListener {
             val usuario = findViewById<InputConLabel>(R.id.inputUsuario).text
             val clave = findViewById<InputConLabel>(R.id.inputClave).text
