@@ -3,7 +3,6 @@
 App Android para empleados del club (no autogestión de socios).
 
 - Stack: Kotlin + Views + Intents, 1 módulo `app`, package `com.example.clubdeportivoteam5kotlin`.
-- Código real: `03-codigo/club-deportivo-enzo`, rama `master`.
 - Estado en memoria, sin DB (`SocioRepository` en memoria).
 
 ## Cómo correr
