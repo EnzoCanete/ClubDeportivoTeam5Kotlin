@@ -17,7 +17,7 @@ class Persona2 : AppCompatActivity() {
 
         btnRegistrar.setOnClickListener {
             Toast.makeText(this, "Registro procesado con éxito", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, Persona3::class.java)
+            val intent = Intent(this, AvisoExito::class.java).putExtra("tituloExito", "Registro Exitoso!")
             startActivity(intent)
         }
 
