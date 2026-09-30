@@ -21,6 +21,7 @@ class PagosQR : AppCompatActivity() {
         }
 
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val etMonto: InputConLabel = findViewById(R.id.pagosMontoQr)
 
         findViewById<Button>(R.id.continuarPagoQr).setOnClickListener {
@@ -31,6 +32,7 @@ class PagosQR : AppCompatActivity() {
             }
             startActivity(Intent(this, PagosEscanearQR::class.java).apply {
                 putExtra(Pagos1.EXTRA_DNI, dni)
+                putExtra(Pagos1.EXTRA_ACTIVIDAD, actividad)
                 putExtra(EXTRA_MONTO, monto)
             })
         }

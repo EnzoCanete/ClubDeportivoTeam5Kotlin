@@ -24,6 +24,7 @@ class PagosTarjeta : AppCompatActivity() {
         }
 
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val esCredito = intent.getStringExtra(EXTRA_TIPO) == "credito"
         val etNumero: InputConLabel = findViewById(R.id.pagosTarjetaNumero)
         val etCvc: InputConLabel = findViewById(R.id.pagosTarjetaCvc)
@@ -55,6 +56,7 @@ class PagosTarjeta : AppCompatActivity() {
                 }
                 detalle = "Pago con crédito en $cuota cuotas (DNI $dni)"
             }
+            if (actividad.isNotEmpty()) detalle = "$actividad: $detalle"
             SocioRepository.marcarCuotaAlDia(dni)
             startActivity(Intent(this, AvisoExito::class.java).apply {
                 putExtra("tituloExito", "Pago exitoso!")

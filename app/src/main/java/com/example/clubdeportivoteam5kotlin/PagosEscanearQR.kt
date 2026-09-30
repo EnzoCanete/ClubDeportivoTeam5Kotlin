@@ -22,6 +22,7 @@ class PagosEscanearQR : AppCompatActivity() {
 
         // ponytail: QR simulado sin cámara; el layout ya muestra el placeholder
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val monto = intent.getDoubleExtra(PagosQR.EXTRA_MONTO, 0.0)
         Toast.makeText(this, "QR simulado DNI $dni $$monto", Toast.LENGTH_SHORT).show()
 
@@ -30,9 +31,10 @@ class PagosEscanearQR : AppCompatActivity() {
             text = "Confirmar pago"
             setOnClickListener {
                 SocioRepository.marcarCuotaAlDia(dni)
+                val base = "Pago con QR simulado de $$monto (DNI $dni)"
                 startActivity(Intent(this@PagosEscanearQR, AvisoExito::class.java).apply {
                     putExtra("tituloExito", "Pago exitoso!")
-                    putExtra(AvisoExito.EXTRA_DETALLE, "Pago con QR simulado de $$monto (DNI $dni)")
+                    putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad: $base")
                 })
             }
         }

@@ -21,6 +21,7 @@ class PagosEfectivo : AppCompatActivity() {
         }
 
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val etMonto: InputConLabel = findViewById(R.id.pagosEfectivoMonto)
 
         findViewById<Button>(R.id.continuarPagoEfectivo).setOnClickListener {
@@ -30,9 +31,10 @@ class PagosEfectivo : AppCompatActivity() {
                 return@setOnClickListener
             }
             SocioRepository.marcarCuotaAlDia(dni)
+            val base = "Pago en efectivo de $$monto (DNI $dni)"
             startActivity(Intent(this, AvisoExito::class.java).apply {
                 putExtra("tituloExito", "Pago exitoso!")
-                putExtra(AvisoExito.EXTRA_DETALLE, "Pago en efectivo de $$monto (DNI $dni)")
+                putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad: $base")
             })
         }
     }
