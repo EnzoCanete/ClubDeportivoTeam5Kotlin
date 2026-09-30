@@ -28,7 +28,7 @@ object SocioRepository {
         return true
     }
 
-    // ponytail: Socio es inmutable; marcar = copy + reemplazo por índice (+30d)
+    // Socio es inmutable; marcar = copy + reemplazo por índice (+30d)
     fun marcarCuotaAlDia(dni: String): Boolean {
         val i = listaSocios.indexOfFirst { it.dni == dni }
         if (i < 0) return false

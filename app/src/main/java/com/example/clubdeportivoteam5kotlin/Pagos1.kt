@@ -40,7 +40,7 @@ class Pagos1 : AppCompatActivity() {
                 Toast.makeText(this, "No hay socio activo con ese DNI", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            // ponytail: pos 0 = cuota mensual (c4, sin actividad); 1..n = actividad diaria (c5)
+            // pos 0 = cuota mensual (c4, sin actividad); 1..n = actividad diaria (c5)
             val nombreActividad = if (spnActividad.selectedItemPosition == 0) null
                 else ACTIVIDADES[spnActividad.selectedItemPosition - 1]
             if (nombreActividad == "Musculación" && !socio.aptoFisico) {
@@ -69,7 +69,7 @@ class Pagos1 : AppCompatActivity() {
     companion object {
         const val EXTRA_DNI = "EXTRA_DNI"
         const val EXTRA_ACTIVIDAD = "EXTRA_ACTIVIDAD"
-        // ponytail: precios fijos declarados R13 (legado FormActividadDiaria)
+        // precios fijos declarados R13 (legado FormActividadDiaria)
         private val PRECIOS = mapOf(
             "Musculación" to 10000,
             "Nutrición" to 20000,

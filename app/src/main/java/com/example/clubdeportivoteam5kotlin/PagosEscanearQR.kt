@@ -20,7 +20,7 @@ class PagosEscanearQR : AppCompatActivity() {
             insets
         }
 
-        // ponytail: QR simulado sin cámara; el layout ya muestra el placeholder
+        // QR simulado sin cámara; el layout ya muestra el placeholder
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
         val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val monto = intent.getDoubleExtra(PagosQR.EXTRA_MONTO, 0.0)

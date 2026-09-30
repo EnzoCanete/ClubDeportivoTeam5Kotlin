@@ -32,7 +32,7 @@ class PagosTarjeta : AppCompatActivity() {
         val cuotas = arrayOf("1", "3", "6")
         spnCuotas.adapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, cuotas)
-        // ponytail: CVC + cuotas solo en crédito; en débito se ocultan
+        // CVC + cuotas solo en crédito; en débito se ocultan
         etCvc.visibility = if (esCredito) View.VISIBLE else View.GONE
         spnCuotas.visibility = if (esCredito) View.VISIBLE else View.GONE
 

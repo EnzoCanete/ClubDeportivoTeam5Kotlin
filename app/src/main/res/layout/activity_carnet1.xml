@@ -20,10 +20,27 @@
         android:paddingRight="20dp"
         android:paddingBottom="30dp">
 
+        <!-- C6: búsqueda por DNI (único agregado al layout existente) -->
+        <com.example.clubdeportivoteam5kotlin.InputConLabel
+            android:id="@+id/DniCarnet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:labelText="DNI:"
+            app:inputType="number" />
+
+        <Button
+            android:id="@+id/btnBuscarCarnet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Buscar"
+            android:textStyle="bold" />
+
         <!-- CONTENEDOR DEL CARNET DE SOCIO -->
         <com.example.clubdeportivoteam5kotlin.FormCuerpoView
             android:layout_width="match_parent"
-            android:layout_height="657dp"
+            android:layout_height="wrap_content"
             app:tituloText="Carnet Digital">
 
             <com.example.clubdeportivoteam5kotlin.FormSlot
@@ -158,6 +175,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="SOC-2024-0042"
+                            android:textColor="@color/texto_color_principal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vencimiento:"
+                            android:textColor="@color/texto_color_secundario"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/lblVencimientoSocio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
                             android:textColor="@color/texto_color_principal"
                             android:textSize="13sp"
                             android:textStyle="bold" />
