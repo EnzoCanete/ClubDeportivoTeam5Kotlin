@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@android:color/transparent"
-        android:text="Regresar"
+        android:text="Menú principal"
         android:textSize="22sp"
         android:layout_marginBottom="18dp"
         android:id="@+id/btnregasist3"/>

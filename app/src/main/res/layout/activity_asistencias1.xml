@@ -27,7 +27,7 @@
         <com.example.clubdeportivoteam5kotlin.MenuItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/menuListadoVencidos"
+            android:id="@+id/asistAlumno"
             app:icono="@drawable/icono_alumnos"
             app:menuTitulo="Alumno" />
 

@@ -48,11 +48,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Asistencias2Activity"
+            android:name=".Asistencias2"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Asistencias3Activity"
+            android:name=".Asistencias3"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
