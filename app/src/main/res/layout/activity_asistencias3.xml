@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/asistencias3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_pantalla_asistencias"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:tituloText="Resultado:">
+
+            <com.example.clubdeportivoteam5kotlin.FormSlot
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre:"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="{Nombre/Apellido}"
+                        android:textSize="20sp"
+                        android:textAlignment="textEnd"
+                        android:id="@+id/txtNmbasist"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DNI:"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="{DNI}"
+                        android:textSize="20sp"
+                        android:textAlignment="textEnd"
+                        android:id="@+id/txtDniasist"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tipo:"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="{Alumno/Profesor}"
+                        android:textSize="20sp"
+                        android:textAlignment="textEnd"
+                        android:id="@+id/txtTipoasist"/>
+                </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmar asistencia"
+                    android:textSize="20sp"
+                    android:id="@+id/btnConfasist"/>
+
+            </com.example.clubdeportivoteam5kotlin.FormSlot>
+
+        </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:text="Regresar"
+        android:textSize="22sp"
+        android:layout_marginBottom="18dp"
+        android:id="@+id/btnregasist3"/>
+
+</LinearLayout>
