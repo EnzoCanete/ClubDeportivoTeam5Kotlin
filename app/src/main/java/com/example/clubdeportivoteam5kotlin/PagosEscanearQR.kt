@@ -1,6 +1,9 @@
 package com.example.clubdeportivoteam5kotlin
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +19,24 @@ class PagosEscanearQR : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // ponytail: QR simulado sin cámara; el layout ya muestra el placeholder
+        val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val monto = intent.getDoubleExtra(PagosQR.EXTRA_MONTO, 0.0)
+        Toast.makeText(this, "QR simulado DNI $dni $$monto", Toast.LENGTH_SHORT).show()
+
+        // "Compartir Link" = confirmar pago simulado
+        findViewById<Button>(R.id.btnMenuprincipal).apply {
+            text = "Confirmar pago"
+            setOnClickListener {
+                SocioRepository.marcarCuotaAlDia(dni)
+                startActivity(Intent(this@PagosEscanearQR, AvisoExito::class.java).apply {
+                    putExtra("tituloExito", "Pago exitoso!")
+                    putExtra(AvisoExito.EXTRA_DETALLE, "Pago con QR simulado de $$monto (DNI $dni)")
+                })
+            }
+        }
+
+        findViewById<Button>(R.id.botonVolver).setOnClickListener { finish() }
     }
 }

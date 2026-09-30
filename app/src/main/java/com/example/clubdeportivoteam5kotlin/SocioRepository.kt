@@ -27,4 +27,14 @@ object SocioRepository {
         listaSocios.add(socio)
         return true
     }
+
+    // ponytail: Socio es inmutable; marcar = copy + reemplazo por índice (+30d)
+    fun marcarCuotaAlDia(dni: String): Boolean {
+        val i = listaSocios.indexOfFirst { it.dni == dni }
+        if (i < 0) return false
+        val cal = java.util.Calendar.getInstance().apply { add(java.util.Calendar.DAY_OF_MONTH, 30) }
+        val venc = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(cal.time)
+        listaSocios[i] = listaSocios[i].copy(cuotaAlDia = true, fechaVencimiento = venc)
+        return true
+    }
 }

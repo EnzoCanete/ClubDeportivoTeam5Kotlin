@@ -27,6 +27,18 @@
                 app:inputType="number"
                 android:id="@+id/pagosTarjetaNumero"
                 />
+            <com.example.clubdeportivoteam5kotlin.InputConLabel
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="CVC (3 digitos, solo crédito):"
+                app:inputType="number"
+                android:id="@+id/pagosTarjetaCvc"
+                />
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pagosTarjetaCuotas"
+                />
         </com.example.clubdeportivoteam5kotlin.FormSlot>
 
         <Button

@@ -10,6 +10,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class AvisoExito : AppCompatActivity() {
+    companion object {
+        const val EXTRA_DETALLE = "EXTRA_DETALLE"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,8 +25,10 @@ class AvisoExito : AppCompatActivity() {
         }
 
         val titulo = intent.getStringExtra("tituloExito")
+        val detalle = intent.getStringExtra(EXTRA_DETALLE)
 
-        findViewById<TextView>(R.id.tituloExito).text = titulo
+        findViewById<TextView>(R.id.tituloExito).text =
+            listOfNotNull(titulo, detalle).joinToString("\n")
 
         // Para cambiar el texto de tituloExito se utiliza algo como esto:
         // val intent = Intent(this, AvisoExito::class.java).putExtra("tituloExito", "Registro Exitoso!")
