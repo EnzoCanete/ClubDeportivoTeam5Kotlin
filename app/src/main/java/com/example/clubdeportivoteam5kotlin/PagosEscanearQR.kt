@@ -31,10 +31,10 @@ class PagosEscanearQR : AppCompatActivity() {
             text = "Confirmar pago"
             setOnClickListener {
                 SocioRepository.marcarCuotaAlDia(dni)
-                val base = "Pago con QR simulado de $$monto (DNI $dni)"
+                val base = "Medio: QR simulado\nMonto: $$monto\nDNI: $dni"
                 startActivity(Intent(this@PagosEscanearQR, AvisoExito::class.java).apply {
                     putExtra("tituloExito", "Pago exitoso!")
-                    putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad: $base")
+                    putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad\n$base")
                 })
             }
         }

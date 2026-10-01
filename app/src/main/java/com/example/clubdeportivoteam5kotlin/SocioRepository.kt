@@ -17,7 +17,9 @@ object SocioRepository {
     val listaSocios = mutableListOf(
         Socio("30111222", "Ana", "Gomez", "ana.gomez@club.com", "Socio", true, true, "2026-10-31"),
         Socio("32456789", "Luis", "Sosa", "luis.sosa@club.com", "No Socio", true, false, "2026-09-20"),
-        Socio("28998877", "Marta", "Rios", "marta.rios@club.com", "Socio", true, true, "2026-11-30")
+        Socio("28998877", "Marta", "Rios", "marta.rios@club.com", "Socio", true, true, "2026-11-30"),
+        Socio("34123456", "Pedro", "Diaz", "pedro.diaz@club.com", "Socio", true, false, "2026-08-15"),
+        Socio("31222333", "Sara", "Lopez", "sara.lopez@club.com", "No Socio", true, false, "2026-09-01")
     )
 
     fun buscarPorDni(dni: String): Socio? = listaSocios.find { it.dni == dni }

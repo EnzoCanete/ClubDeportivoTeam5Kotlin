@@ -22,6 +22,8 @@ Login: `admin` / `1234`.
 | `30111222` | Ana Gomez | Socio | al día | 2026-10-31 |
 | `32456789` | Luis Sosa | No Socio | VENCIDA | 2026-09-20 |
 | `28998877` | Marta Rios | Socio | al día | 2026-11-30 |
+| `34123456` | Pedro Diaz | Socio | VENCIDA | 2026-08-15 |
+| `31222333` | Sara Lopez | No Socio | VENCIDA | 2026-09-01 |
 
 DNI inexistente: cualquier otro (ej `99999999`).
 

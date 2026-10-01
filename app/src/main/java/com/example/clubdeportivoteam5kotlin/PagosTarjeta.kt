@@ -42,7 +42,7 @@ class PagosTarjeta : AppCompatActivity() {
                 Toast.makeText(this, "Tarjeta inválida: 16 dígitos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            var detalle = "Pago con débito (DNI $dni)"
+            var detalle = "Medio: débito\nDNI: $dni"
             if (esCredito) {
                 val cvc = etCvc.text.trim().filter { it.isDigit() }
                 if (cvc.length != 3) {
@@ -54,9 +54,9 @@ class PagosTarjeta : AppCompatActivity() {
                     Toast.makeText(this, "Cuotas válidas: 1, 3 o 6", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-                detalle = "Pago con crédito en $cuota cuotas (DNI $dni)"
+                detalle = "Medio: crédito en $cuota cuotas\nDNI: $dni"
             }
-            if (actividad.isNotEmpty()) detalle = "$actividad: $detalle"
+            if (actividad.isNotEmpty()) detalle = "$actividad\n$detalle"
             SocioRepository.marcarCuotaAlDia(dni)
             startActivity(Intent(this, AvisoExito::class.java).apply {
                 putExtra("tituloExito", "Pago exitoso!")

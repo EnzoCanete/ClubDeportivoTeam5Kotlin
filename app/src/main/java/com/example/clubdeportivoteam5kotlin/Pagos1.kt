@@ -61,7 +61,7 @@ class Pagos1 : AppCompatActivity() {
                 }
             }.let {
                 it.putExtra(EXTRA_DNI, dni)
-                it.putExtra(EXTRA_ACTIVIDAD, nombreActividad?.let { "$it ($${PRECIOS[it]})" }.orEmpty())
+                it.putExtra(EXTRA_ACTIVIDAD, nombreActividad?.let { "$it: $$${PRECIOS[it]}" }.orEmpty())
                 startActivity(it)
             }
         }
