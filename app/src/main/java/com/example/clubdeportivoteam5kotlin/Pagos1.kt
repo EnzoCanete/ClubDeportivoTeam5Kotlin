@@ -24,6 +24,7 @@ class Pagos1 : AppCompatActivity() {
         }
 
         val dniInput: InputConLabel = findViewById(R.id.DniPagos)
+        intent.getStringExtra(EXTRA_DNI)?.takeIf { it.isNotEmpty() }?.let { dniInput.text = it }
         val rgMedio: RadioGroup = findViewById(R.id.radioOpcionesPagos)
         val spnActividad: Spinner = findViewById(R.id.spnActividadPago)
         spnActividad.adapter =
