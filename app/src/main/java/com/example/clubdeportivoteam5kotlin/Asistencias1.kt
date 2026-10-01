@@ -22,11 +22,13 @@ class Asistencias1 : AppCompatActivity() {
         val itemProfesor = findViewById<MenuItem>(R.id.asistProfesor)
         itemProfesor.setOnClickListener {
             val intent = Intent (this, Asistencias2::class.java)
+            intent.putExtra(Asistencias2.EXTRA_TIPO, "Profesor")
             startActivity(intent)
         }
         val itemAlumno = findViewById<MenuItem>(R.id.asistAlumno)
         itemAlumno.setOnClickListener {
             val intent = Intent (this, Asistencias2::class.java)
+            intent.putExtra(Asistencias2.EXTRA_TIPO, "Alumno")
             startActivity(intent)
         }
         val btnRegresar = findViewById<Button>(R.id.btnregasist)

@@ -3,6 +3,7 @@ package com.example.clubdeportivoteam5kotlin
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +21,17 @@ class Asistencias3 : AppCompatActivity() {
             insets
         }
 
+        val dni = intent.getStringExtra(Asistencias2.EXTRA_DNI).orEmpty()
+        val tipo = intent.getStringExtra(Asistencias2.EXTRA_TIPO).orEmpty()
+        val socio = SocioRepository.buscarPorDni(dni)
+        findViewById<TextView>(R.id.txtNmbasist).text = socio?.let { "${it.nombre} ${it.apellido}" }.orEmpty()
+        findViewById<TextView>(R.id.txtDniasist).text = dni
+        findViewById<TextView>(R.id.txtTipoasist).text = tipo
+
         val btnConfasistencia = findViewById<Button>(R.id.btnConfasist)
         btnConfasistencia.setOnClickListener {
             Toast.makeText(this, "Asistencia confirmada", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MenuPrincipal::class.java))
         }
 
         val btnRegresar3 = findViewById<Button>(R.id.btnregasist3)
