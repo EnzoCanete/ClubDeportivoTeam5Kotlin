@@ -40,10 +40,5 @@ class Asistencias2 : AppCompatActivity() {
                     .putExtra(EXTRA_TIPO, tipo))
             }
         }
-
-        val btnRegresar2 = findViewById<Button>(R.id.btnregasist2)
-        btnRegresar2.setOnClickListener {
-            finish()
-        }
     }
 }

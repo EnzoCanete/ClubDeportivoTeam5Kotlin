@@ -38,7 +38,5 @@ class PagosEscanearQR : AppCompatActivity() {
                 })
             }
         }
-
-        findViewById<Button>(R.id.botonVolver).setOnClickListener { finish() }
     }
 }

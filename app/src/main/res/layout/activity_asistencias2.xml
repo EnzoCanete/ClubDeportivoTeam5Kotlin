@@ -45,14 +45,4 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@android:color/transparent"
-        android:text="Regresar"
-        android:textSize="22sp"
-        android:layout_marginBottom="18dp"
-        android:id="@+id/btnregasist2"/>
-
 </LinearLayout>

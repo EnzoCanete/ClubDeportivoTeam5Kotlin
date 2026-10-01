@@ -61,10 +61,6 @@
 
 
         </com.example.clubdeportivoteam5kotlin.FormSlot>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <Button
                 android:layout_width="match_parent"
@@ -72,16 +68,6 @@
                 android:text="Enviar recordatorio"
                 android:textStyle="normal"
                 android:id="@+id/btnRegistrar"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Regresar"
-                android:textStyle="normal"
-                android:background="@android:color/transparent"
-                android:id="@+id/btnRegresar"/>
-        </LinearLayout>
 
     </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
 </LinearLayout>

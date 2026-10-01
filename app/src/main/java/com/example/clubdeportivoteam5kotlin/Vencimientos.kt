@@ -29,9 +29,8 @@ class Vencimientos : AppCompatActivity() {
         }
 
         rv = findViewById(R.id.rvVencimientos)
-        // Fuera de HU-05: ocultar "Enviar recordatorio", se conserva Regresar
+        // Fuera de HU-05: ocultar "Enviar recordatorio"
         findViewById<Button>(R.id.btnRegistrar).visibility = View.GONE
-        findViewById<Button>(R.id.btnRegresar).setOnClickListener { finish() }
         cargar()
     }
 

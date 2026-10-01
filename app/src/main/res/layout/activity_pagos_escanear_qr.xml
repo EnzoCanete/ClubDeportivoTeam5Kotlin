@@ -27,28 +27,12 @@
         android:src="@drawable/ic_qr_placeholder"
         android:layout_marginBottom="100dp"/>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
     <Button
         android:id="@+id/btnMenuprincipal"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="Compartir Link"
         android:textStyle="normal"
-        android:layout_marginBottom="16dp"
-        />
-    <Button
-        android:id="@+id/botonVolver"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Regresar"
+        android:layout_marginBottom="16dp"/>
 
-        android:textStyle="normal" />
-
-    </LinearLayout>
 </LinearLayout>

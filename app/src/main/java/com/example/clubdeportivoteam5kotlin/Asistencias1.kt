@@ -31,10 +31,5 @@ class Asistencias1 : AppCompatActivity() {
             intent.putExtra(Asistencias2.EXTRA_TIPO, "Alumno")
             startActivity(intent)
         }
-        val btnRegresar = findViewById<Button>(R.id.btnregasist)
-        btnRegresar.setOnClickListener {
-            val intent = Intent (this, MenuPrincipal::class.java)
-            startActivity(intent)
-        }
     }
 }

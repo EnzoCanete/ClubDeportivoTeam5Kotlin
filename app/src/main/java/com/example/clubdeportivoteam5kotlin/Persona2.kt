@@ -51,10 +51,6 @@ class Persona2 : AppCompatActivity() {
                 Toast.makeText(this, "Ya existe una persona con ese DNI", Toast.LENGTH_SHORT).show()
             }
         }
-
-        btnRegresar.setOnClickListener {
-            finish()
-        }
     }
 
     private fun spinner(vararg valores: String) =
