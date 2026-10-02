@@ -31,8 +31,9 @@
         android:id="@+id/btnMenuprincipal"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Compartir Link"
+        android:text="Confirmar pago"
         android:textStyle="normal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        />
 
 </LinearLayout>
