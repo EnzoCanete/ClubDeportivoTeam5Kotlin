@@ -15,14 +15,18 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
 
         <com.example.clubdeportivoteam5kotlin.MenuItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/asistProfesor"
             app:icono="@drawable/icono_profesor"
-            app:menuTitulo="Profesor" />
+            app:menuTitulo="Profesor"
+            android:layout_marginBottom="10dp"
+            />
 
         <com.example.clubdeportivoteam5kotlin.MenuItem
             android:layout_width="match_parent"

@@ -29,9 +29,15 @@ class Vencimientos : AppCompatActivity() {
         }
 
         rv = findViewById(R.id.rvVencimientos)
+
+        rv.addItemDecoration(
+            SeparadorTabla(16.dp())
+        )
+
         // Fuera de HU-05: ocultar "Enviar recordatorio"
         findViewById<Button>(R.id.btnRegistrar).visibility = View.GONE
         cargar()
+
     }
 
     override fun onResume() {
@@ -74,5 +80,12 @@ class Vencimientos : AppCompatActivity() {
             h.fecha.text = s.fechaVencimiento
             h.itemView.setOnClickListener { onClick(s.dni) }
         }
+
+    }
+
+
+    private fun Int.dp(): Int {
+
+        return (this * resources.displayMetrics.density).toInt()
     }
 }

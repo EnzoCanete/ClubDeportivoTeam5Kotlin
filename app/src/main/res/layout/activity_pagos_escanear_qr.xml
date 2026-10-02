@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".AvisoExito"
     android:orientation="vertical"
+    android:layout_gravity="center"
+
     android:gravity="top"
     android:padding="80dp"
     android:background="@color/fondo_uno"
@@ -34,6 +36,7 @@
         android:text="Confirmar pago"
         android:textStyle="normal"
         android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"
         />
 
 </LinearLayout>
