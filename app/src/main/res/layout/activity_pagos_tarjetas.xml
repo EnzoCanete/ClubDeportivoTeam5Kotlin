@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tituloText="Pago débito"
+        app:tituloText="Datos tarjeta"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         >
