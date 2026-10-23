@@ -24,8 +24,10 @@ class PagosTarjeta : AppCompatActivity() {
         }
 
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val tipo = intent.getStringExtra(Pagos1.EXTRA_TIPO).orEmpty()
+        val medio = intent.getStringExtra(Pagos1.EXTRA_MEDIO).orEmpty()
         val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
-        val esCredito = intent.getStringExtra(EXTRA_TIPO) == "credito"
+        val esCredito = intent.getStringExtra(EXTRA_TIPO_TARJETA) == "credito"
         val etNumero: InputConLabel = findViewById(R.id.pagosTarjetaNumero)
         val etCvc: InputConLabel = findViewById(R.id.pagosTarjetaCvc)
         val spnCuotas: Spinner = findViewById(R.id.pagosTarjetaCuotas)
@@ -57,15 +59,19 @@ class PagosTarjeta : AppCompatActivity() {
                 detalle = "Medio: crédito en $cuota cuotas\nDNI: $dni"
             }
             if (actividad.isNotEmpty()) detalle = "$actividad\n$detalle"
-            SocioRepository.marcarCuotaAlDia(dni)
-            startActivity(Intent(this, AvisoExito::class.java).apply {
-                putExtra("tituloExito", "Pago exitoso!")
-                putExtra(AvisoExito.EXTRA_DETALLE, detalle)
-            })
+            val monto = intent.getDoubleExtra(Pagos1.EXTRA_MONTO, 0.0)
+            if (SocioRepository.registrarPago(dni, tipo, actividad.ifEmpty { null }, monto, medio)) {
+                startActivity(Intent(this, AvisoExito::class.java).apply {
+                    putExtra("tituloExito", "Pago exitoso!")
+                    putExtra(AvisoExito.EXTRA_DETALLE, detalle)
+                })
+            } else {
+                Toast.makeText(this, "No se pudo registrar el pago", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     companion object {
-        const val EXTRA_TIPO = "EXTRA_TIPO_TARJETA"
+        const val EXTRA_TIPO_TARJETA = "EXTRA_TIPO_TARJETA"
     }
 }

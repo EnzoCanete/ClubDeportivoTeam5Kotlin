@@ -28,6 +28,8 @@ class Persona1 : AppCompatActivity() {
             when {
                 nombre.isBlank() || apellido.isBlank() || dni.isBlank() || correo.isBlank() ->
                     Toast.makeText(this, "Complete nombre, apellido, DNI y correo", Toast.LENGTH_SHORT).show()
+                !dni.matches(Regex("^\\d{7,8}$")) ->
+                    Toast.makeText(this, "DNI inválido: 7 u 8 dígitos numéricos", Toast.LENGTH_SHORT).show()
                 // Apto obligatorio simple (sin foto ni fecha, fuera de alcance de HU-01)
                 campoAptoFisico.text.isBlank() ->
                     Toast.makeText(this, "El apto físico es obligatorio", Toast.LENGTH_SHORT).show()

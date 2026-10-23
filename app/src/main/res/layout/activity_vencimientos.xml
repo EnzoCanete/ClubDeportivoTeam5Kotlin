@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tituloText="Cuotas Vencidas">
+        app:tituloText="Vencimientos">
 
         <com.example.clubdeportivoteam5kotlin.FormSlot
             android:layout_width="match_parent"

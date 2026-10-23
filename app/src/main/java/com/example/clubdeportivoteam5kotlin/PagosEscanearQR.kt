@@ -26,16 +26,21 @@ class PagosEscanearQR : AppCompatActivity() {
         val monto = intent.getDoubleExtra(PagosQR.EXTRA_MONTO, 0.0)
         Toast.makeText(this, "QR simulado DNI $dni $$monto", Toast.LENGTH_SHORT).show()
 
+        val tipo = intent.getStringExtra(Pagos1.EXTRA_TIPO).orEmpty()
+        val medio = intent.getStringExtra(Pagos1.EXTRA_MEDIO).orEmpty()
         // "Compartir Link" = confirmar pago simulado
         findViewById<Button>(R.id.btnMenuprincipal).apply {
             text = "Confirmar pago"
             setOnClickListener {
-                SocioRepository.marcarCuotaAlDia(dni)
-                val base = "Medio: QR simulado\nMonto: $$monto\nDNI: $dni"
-                startActivity(Intent(this@PagosEscanearQR, AvisoExito::class.java).apply {
-                    putExtra("tituloExito", "Pago exitoso!")
-                    putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad\n$base")
-                })
+                if (SocioRepository.registrarPago(dni, tipo, actividad.ifEmpty { null }, monto, medio)) {
+                    val base = "Medio: QR simulado\nMonto: $$monto\nDNI: $dni"
+                    startActivity(Intent(this@PagosEscanearQR, AvisoExito::class.java).apply {
+                        putExtra("tituloExito", "Pago exitoso!")
+                        putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad\n$base")
+                    })
+                } else {
+                    Toast.makeText(this@PagosEscanearQR, "No se pudo registrar el pago", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

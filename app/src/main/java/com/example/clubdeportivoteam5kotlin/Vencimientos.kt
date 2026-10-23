@@ -46,13 +46,15 @@ class Vencimientos : AppCompatActivity() {
     }
 
     private fun cargar() {
-        val vencidos = SocioRepository.listaSocios
-            .filter { !it.cuotaAlDia }
-            .sortedBy { it.fechaVencimiento }
-        if (vencidos.isEmpty()) {
-            Toast.makeText(this, "No hay cuotas vencidas", Toast.LENGTH_SHORT).show()
+        // listarSocios() ya excluye No Socios y ordena por fecha de vencimiento.
+        val socios = SocioRepository.listarSocios()
+        val mensaje = when {
+            socios.isEmpty() -> "No hay socios para mostrar"
+            socios.all { it.cuotaAlDia } -> "No hay cuotas vencidas"
+            else -> null
         }
-        rv.adapter = VtoAdapter(vencidos) { dni ->
+        mensaje?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+        rv.adapter = VtoAdapter(socios) { dni ->
             startActivity(Intent(this, Pagos1::class.java).putExtra(Pagos1.EXTRA_DNI, dni))
         }
     }
@@ -77,7 +79,7 @@ class Vencimientos : AppCompatActivity() {
             val s = items[pos]
             h.dni.text = s.dni
             h.nombre.text = "${s.nombre} ${s.apellido}"
-            h.fecha.text = s.fechaVencimiento
+            h.fecha.text = "${s.fechaVencimiento} · ${if (s.cuotaAlDia) "Por vencer" else "Vencida"}"
             h.itemView.setOnClickListener { onClick(s.dni) }
         }
 

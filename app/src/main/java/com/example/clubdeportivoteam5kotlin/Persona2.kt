@@ -7,9 +7,6 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class Persona2 : AppCompatActivity() {
 
@@ -36,10 +33,9 @@ class Persona2 : AppCompatActivity() {
                 correo = intent.getStringExtra(Persona1.EXTRA_CORREO).orEmpty(),
                 tipo = spnTipo.selectedItem.toString(),
                 aptoFisico = true,
-                // El alta no incluye cobro: la cuota vence desde el día de hoy.
-                // El filtro de vencimientos (c7) define si hoy ya cuenta como vencido.
+                // El vencimiento lo asigna el repositorio: hoy para Socio, null para No Socio.
                 cuotaAlDia = false,
-                fechaVencimiento = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+                fechaVencimiento = null
             )
 
             if (SocioRepository.agregar(socio)) {

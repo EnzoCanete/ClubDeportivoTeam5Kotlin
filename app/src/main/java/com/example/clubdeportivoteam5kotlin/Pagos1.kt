@@ -41,35 +41,48 @@ class Pagos1 : AppCompatActivity() {
                 Toast.makeText(this, "No hay socio activo con ese DNI", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            // pos 0 = cuota mensual (c4, sin actividad); 1..n = actividad diaria (c5)
+            val tipoPago = if (spnActividad.selectedItemPosition == 0) "cuota" else "diaria"
             val nombreActividad = if (spnActividad.selectedItemPosition == 0) null
                 else ACTIVIDADES[spnActividad.selectedItemPosition - 1]
             if (nombreActividad == "Musculación" && !socio.aptoFisico) {
                 Toast.makeText(this, "Musculación requiere apto físico", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            when (rgMedio.checkedRadioButtonId) {
-                R.id.radioEfectivo -> Intent(this, PagosEfectivo::class.java)
-                R.id.radioDebito -> Intent(this, PagosTarjeta::class.java)
-                    .putExtra(PagosTarjeta.EXTRA_TIPO, "debito")
-                R.id.radioCredito -> Intent(this, PagosTarjeta::class.java)
-                    .putExtra(PagosTarjeta.EXTRA_TIPO, "credito")
-                R.id.radioQr -> Intent(this, PagosQR::class.java)
+            val medio = when (rgMedio.checkedRadioButtonId) {
+                R.id.radioEfectivo -> "efectivo"
+                R.id.radioDebito -> "debito"
+                R.id.radioCredito -> "credito"
+                R.id.radioQr -> "qr"
                 else -> {
                     Toast.makeText(this, "Seleccioná un medio de pago", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-            }.let {
-                it.putExtra(EXTRA_DNI, dni)
-                it.putExtra(EXTRA_ACTIVIDAD, nombreActividad?.let { "$it: $$${PRECIOS[it]}" }.orEmpty())
-                startActivity(it)
             }
+            val destino = when (rgMedio.checkedRadioButtonId) {
+                R.id.radioEfectivo -> Intent(this, PagosEfectivo::class.java)
+                R.id.radioDebito, R.id.radioCredito -> Intent(this, PagosTarjeta::class.java)
+                    .putExtra(PagosTarjeta.EXTRA_TIPO_TARJETA, medio)
+                R.id.radioQr -> Intent(this, PagosQR::class.java)
+                else -> null
+            }!!
+            val monto = if (nombreActividad != null) PRECIOS[nombreActividad]!!.toDouble() else 0.0
+            destino.apply {
+                putExtra(EXTRA_DNI, dni)
+                putExtra(EXTRA_TIPO, tipoPago)
+                putExtra(EXTRA_ACTIVIDAD, nombreActividad?.let { "$it: $$${PRECIOS[it]}" }.orEmpty())
+                putExtra(EXTRA_MEDIO, medio)
+                putExtra(EXTRA_MONTO, monto)
+            }
+            startActivity(destino)
         }
     }
 
     companion object {
         const val EXTRA_DNI = "EXTRA_DNI"
+        const val EXTRA_TIPO = "EXTRA_TIPO_PAGO"
         const val EXTRA_ACTIVIDAD = "EXTRA_ACTIVIDAD"
+        const val EXTRA_MEDIO = "EXTRA_MEDIO"
+        const val EXTRA_MONTO = "EXTRA_MONTO"
         // precios fijos declarados R13 (legado FormActividadDiaria)
         private val PRECIOS = mapOf(
             "Musculación" to 10000,
