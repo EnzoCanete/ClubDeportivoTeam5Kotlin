@@ -58,6 +58,8 @@ object SocioRepository {
     }
 
     fun agregar(socio: Socio): Boolean {
+        // Socio arranca con vencimiento hoy (o el indicado); No Socio nunca tiene vencimiento.
+        val vencimiento = if (socio.tipo == "Socio") socio.fechaVencimiento ?: hoy() else null
         val cv = ContentValues().apply {
             put("dni", socio.dni)
             put("nombre", socio.nombre)
@@ -65,7 +67,7 @@ object SocioRepository {
             put("correo", socio.correo)
             put("tipo", socio.tipo)
             put("apto", if (socio.aptoFisico) 1 else 0)
-            put("fecha_vencimiento", socio.fechaVencimiento)
+            put("fecha_vencimiento", vencimiento)
         }
         return helper.writableDatabase.insert("personas", null, cv) != -1L
     }

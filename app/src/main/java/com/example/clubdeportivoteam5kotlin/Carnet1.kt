@@ -35,6 +35,11 @@ class Carnet1 : AppCompatActivity() {
                 Toast.makeText(this, "No hay socio activo con ese DNI", Toast.LENGTH_SHORT).show()
                 return false
             }
+            if (socio.tipo != "Socio") {
+                emitidoDni = null
+                Toast.makeText(this, "El carnet es solo para Socios", Toast.LENGTH_SHORT).show()
+                return false
+            }
             if (!socio.cuotaAlDia) {
                 emitidoDni = null
                 Toast.makeText(this, "Cuota vencida: debe renovar", Toast.LENGTH_SHORT).show()

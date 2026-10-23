@@ -69,6 +69,45 @@ class PersistenciaInstrumentedTest {
     }
 
     @Test
+    fun altaAsignaVencimientoSoloASocioYPersisteTrasReabrir() {
+        val hoy = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(java.util.Date())
+        assertTrue(SocioRepository.agregar(Socio("36000222", "Sol", "Socio", "sol@club.com", "Socio", true, false, null)))
+        assertTrue(SocioRepository.agregar(Socio("36000333", "Nora", "NoSocio", "nora@club.com", "No Socio", true, false, "2026-12-31")))
+
+        helper.close()
+        val ctx = ApplicationProvider.getApplicationContext<android.content.Context>()
+        helper = ClubDbHelper(ctx)
+        SocioRepository.init(ctx)
+
+        val socio = SocioRepository.buscarPorDni("36000222")!!
+        assertEquals("Socio", socio.tipo)
+        assertEquals(hoy, socio.fechaVencimiento)
+        assertTrue(socio.cuotaAlDia)
+
+        val noSocio = SocioRepository.buscarPorDni("36000333")!!
+        assertEquals("No Socio", noSocio.tipo)
+        assertNull("No Socio nunca tiene vencimiento", noSocio.fechaVencimiento)
+        assertFalse(noSocio.cuotaAlDia)
+    }
+
+    @Test
+    fun cuotaAlDiaSoloParaSocioConVencimientoVigente() {
+        assertTrue(SocioRepository.buscarPorDni("30111222")!!.cuotaAlDia)
+        assertFalse(SocioRepository.buscarPorDni("34123456")!!.cuotaAlDia)
+        assertFalse(SocioRepository.buscarPorDni("32456789")!!.cuotaAlDia)
+    }
+
+    @Test
+    fun listarSociosExcluyeNoSociosYOrdenaPorVencimiento() {
+        val socios = SocioRepository.listarSocios()
+        assertEquals(3, socios.size)
+        assertTrue(socios.all { it.tipo == "Socio" })
+        val fechas = socios.map { it.fechaVencimiento!! }
+        assertEquals(fechas, fechas.sorted())
+        assertNull(socios.firstOrNull { it.dni == "32456789" })
+    }
+
+    @Test
     fun pagoSobreviveTrasCerrarYReabrir() {
         SocioRepository.registrarPago("34123456", "cuota", null, 0.0, "debito")
         assertEquals(1, SocioRepository.pagosDe("34123456").size)
