@@ -1,5 +1,12 @@
 package com.example.clubdeportivoteam5kotlin
 
+import android.content.ContentValues
+import android.content.Context
+import android.database.Cursor
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 data class Socio(
     val dni: String,
     val nombre: String,
@@ -8,35 +15,134 @@ data class Socio(
     val tipo: String,
     val aptoFisico: Boolean,
     val cuotaAlDia: Boolean,
-    val fechaVencimiento: String
+    val fechaVencimiento: String?
 )
 
-// Repositorio en memoria: la entrega-01 no usa base de datos, se pierde al cerrar la app
+data class Pago(
+    val id: Long,
+    val dni: String,
+    val tipo: String,
+    val actividad: String?,
+    val monto: Double,
+    val medio: String,
+    val fecha: String
+)
+
 object SocioRepository {
 
-    val listaSocios = mutableListOf(
-        Socio("30111222", "Ana", "Gomez", "ana.gomez@club.com", "Socio", true, true, "2026-10-31"),
-        Socio("32456789", "Luis", "Sosa", "luis.sosa@club.com", "No Socio", true, false, "2026-09-20"),
-        Socio("28998877", "Marta", "Rios", "marta.rios@club.com", "Socio", true, true, "2026-11-30"),
-        Socio("34123456", "Pedro", "Diaz", "pedro.diaz@club.com", "Socio", true, false, "2026-08-15"),
-        Socio("31222333", "Sara", "Lopez", "sara.lopez@club.com", "No Socio", true, false, "2026-09-01")
-    )
+    private lateinit var helper: ClubDbHelper
 
-    fun buscarPorDni(dni: String): Socio? = listaSocios.find { it.dni == dni }
-
-    fun agregar(socio: Socio): Boolean {
-        if (buscarPorDni(socio.dni) != null) return false
-        listaSocios.add(socio)
-        return true
+    fun init(context: Context) {
+        helper = ClubDbHelper(context.applicationContext)
     }
 
-    // Socio es inmutable; marcar = copy + reemplazo por índice (+30d)
-    fun marcarCuotaAlDia(dni: String): Boolean {
-        val i = listaSocios.indexOfFirst { it.dni == dni }
-        if (i < 0) return false
-        val cal = java.util.Calendar.getInstance().apply { add(java.util.Calendar.DAY_OF_MONTH, 30) }
-        val venc = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(cal.time)
-        listaSocios[i] = listaSocios[i].copy(cuotaAlDia = true, fechaVencimiento = venc)
-        return true
+    private fun hoy(): String =
+        SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+
+    fun buscarPorDni(dni: String): Socio? {
+        helper.readableDatabase.query(
+            "personas", null, "dni = ?", arrayOf(dni), null, null, null
+        ).use { c ->
+            return if (c.moveToFirst()) c.aSocio() else null
+        }
+    }
+
+    fun listarSocios(): List<Socio> {
+        val lista = mutableListOf<Socio>()
+        helper.readableDatabase.query(
+            "personas", null, "tipo = ?", arrayOf("Socio"), null, null, "fecha_vencimiento"
+        ).use { c ->
+            while (c.moveToNext()) lista.add(c.aSocio())
+        }
+        return lista
+    }
+
+    fun agregar(socio: Socio): Boolean {
+        val cv = ContentValues().apply {
+            put("dni", socio.dni)
+            put("nombre", socio.nombre)
+            put("apellido", socio.apellido)
+            put("correo", socio.correo)
+            put("tipo", socio.tipo)
+            put("apto", if (socio.aptoFisico) 1 else 0)
+            put("fecha_vencimiento", socio.fechaVencimiento)
+        }
+        return helper.writableDatabase.insert("personas", null, cv) != -1L
+    }
+
+    fun registrarPago(dni: String, tipo: String, actividad: String?, monto: Double, medio: String): Boolean {
+        val db = helper.writableDatabase
+        val fecha = hoy()
+        db.beginTransaction()
+        try {
+            val pago = ContentValues().apply {
+                put("dni", dni)
+                put("tipo", tipo)
+                put("actividad", actividad)
+                put("monto", monto)
+                put("medio", medio)
+                put("fecha", fecha)
+            }
+            val id = db.insert("pagos", null, pago)
+            if (id == -1L) { db.endTransaction(); return false }
+
+            if (tipo == "cuota") {
+                val cv = ContentValues().apply {
+                    put("fecha_vencimiento", sumar30Dias(fecha))
+                }
+                db.update("personas", cv, "dni = ?", arrayOf(dni))
+            }
+            db.setTransactionSuccessful()
+            return true
+        } finally {
+            db.endTransaction()
+        }
+    }
+
+    fun pagosDe(dni: String): List<Pago> {
+        val lista = mutableListOf<Pago>()
+        helper.readableDatabase.query(
+            "pagos", null, "dni = ?", arrayOf(dni), null, null, "id DESC"
+        ).use { c ->
+            while (c.moveToNext()) lista.add(c.aPago())
+        }
+        return lista
+    }
+
+    private fun Cursor.aSocio(): Socio {
+        val vencimiento = getString(getColumnIndexOrThrow("fecha_vencimiento"))
+        val tipoSocio = getString(getColumnIndexOrThrow("tipo"))
+        val esSocio = tipoSocio == "Socio"
+        val hoy = hoy()
+        val cuotaAlDia = esSocio && vencimiento != null && vencimiento >= hoy
+        return Socio(
+            dni = getString(getColumnIndexOrThrow("dni")),
+            nombre = getString(getColumnIndexOrThrow("nombre")),
+            apellido = getString(getColumnIndexOrThrow("apellido")),
+            correo = getString(getColumnIndexOrThrow("correo")),
+            tipo = tipoSocio,
+            aptoFisico = getInt(getColumnIndexOrThrow("apto")) == 1,
+            cuotaAlDia = cuotaAlDia,
+            fechaVencimiento = vencimiento
+        )
+    }
+
+    private fun Cursor.aPago(): Pago = Pago(
+        id = getLong(getColumnIndexOrThrow("id")),
+        dni = getString(getColumnIndexOrThrow("dni")),
+        tipo = getString(getColumnIndexOrThrow("tipo")),
+        actividad = getString(getColumnIndexOrThrow("actividad")),
+        monto = getDouble(getColumnIndexOrThrow("monto")),
+        medio = getString(getColumnIndexOrThrow("medio")),
+        fecha = getString(getColumnIndexOrThrow("fecha"))
+    )
+
+    private fun sumar30Dias(fecha: String): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        val cal = java.util.Calendar.getInstance().apply {
+            time = sdf.parse(fecha)!!
+            add(java.util.Calendar.DAY_OF_MONTH, 30)
+        }
+        return sdf.format(cal.time)
     }
 }

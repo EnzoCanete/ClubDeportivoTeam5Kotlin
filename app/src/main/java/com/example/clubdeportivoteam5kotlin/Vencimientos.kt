@@ -46,9 +46,8 @@ class Vencimientos : AppCompatActivity() {
     }
 
     private fun cargar() {
-        val vencidos = SocioRepository.listaSocios
+        val vencidos = SocioRepository.listarSocios()
             .filter { !it.cuotaAlDia }
-            .sortedBy { it.fechaVencimiento }
         if (vencidos.isEmpty()) {
             Toast.makeText(this, "No hay cuotas vencidas", Toast.LENGTH_SHORT).show()
         }

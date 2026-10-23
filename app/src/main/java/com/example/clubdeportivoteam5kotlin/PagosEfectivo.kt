@@ -21,6 +21,7 @@ class PagosEfectivo : AppCompatActivity() {
         }
 
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val tipo = intent.getStringExtra(Pagos1.EXTRA_TIPO).orEmpty()
         val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val etMonto: InputConLabel = findViewById(R.id.pagosEfectivoMonto)
 
@@ -30,12 +31,15 @@ class PagosEfectivo : AppCompatActivity() {
                 Toast.makeText(this, "Ingresá un monto mayor a 0", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            SocioRepository.marcarCuotaAlDia(dni)
-            val base = "Medio: efectivo\nMonto: $$monto\nDNI: $dni"
-            startActivity(Intent(this, AvisoExito::class.java).apply {
-                putExtra("tituloExito", "Pago exitoso!")
-                putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad\n$base")
-            })
+            if (SocioRepository.registrarPago(dni, tipo, actividad.ifEmpty { null }, monto, "efectivo")) {
+                val base = "Medio: efectivo\nMonto: $$monto\nDNI: $dni"
+                startActivity(Intent(this, AvisoExito::class.java).apply {
+                    putExtra("tituloExito", "Pago exitoso!")
+                    putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad\n$base")
+                })
+            } else {
+                Toast.makeText(this, "No se pudo registrar el pago", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
