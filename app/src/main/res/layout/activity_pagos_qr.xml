@@ -20,13 +20,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.clubdeportivoteam5kotlin.InputConLabel
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Monto:"
-                app:inputType="number"
                 android:id="@+id/pagosMontoQr"
-                />
+                android:textColor="@color/texto_color_principal"
+                android:textSize="20sp"
+                android:padding="8dp"/>
         </com.example.clubdeportivoteam5kotlin.FormSlot>
 
         <Button

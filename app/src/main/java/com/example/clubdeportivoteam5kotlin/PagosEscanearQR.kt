@@ -24,7 +24,7 @@ class PagosEscanearQR : AppCompatActivity() {
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
         val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val monto = intent.getDoubleExtra(PagosQR.EXTRA_MONTO, 0.0)
-        Toast.makeText(this, "QR simulado DNI $dni $$monto", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "QR simulado DNI $dni ${Pagos1.formatearMonto(monto)}", Toast.LENGTH_SHORT).show()
 
         val tipo = intent.getStringExtra(Pagos1.EXTRA_TIPO).orEmpty()
         val medio = intent.getStringExtra(Pagos1.EXTRA_MEDIO).orEmpty()
@@ -33,9 +33,9 @@ class PagosEscanearQR : AppCompatActivity() {
             text = "Confirmar pago"
             setOnClickListener {
                 if (SocioRepository.registrarPago(dni, tipo, actividad.ifEmpty { null }, monto, medio)) {
-                    val base = "Medio: QR simulado\nMonto: $$monto\nDNI: $dni"
+                    val base = "Medio: QR simulado\nMonto: ${Pagos1.formatearMonto(monto)}\nDNI: $dni"
                     startActivity(Intent(this@PagosEscanearQR, AvisoExito::class.java).apply {
-                        putExtra("tituloExito", "Pago exitoso!")
+                        putExtra("tituloExito", Pagos1.tituloExito(tipo))
                         putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad\n$base")
                     })
                 } else {

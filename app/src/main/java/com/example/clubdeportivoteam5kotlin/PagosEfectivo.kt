@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.widget.TextView
 
 class PagosEfectivo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,18 +24,15 @@ class PagosEfectivo : AppCompatActivity() {
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
         val tipo = intent.getStringExtra(Pagos1.EXTRA_TIPO).orEmpty()
         val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
-        val etMonto: InputConLabel = findViewById(R.id.pagosEfectivoMonto)
+        val monto = intent.getDoubleExtra(Pagos1.EXTRA_MONTO, 0.0)
+        val tvMonto: TextView = findViewById(R.id.pagosEfectivoMonto)
+        tvMonto.text = "Monto a pagar: ${Pagos1.formatearMonto(monto)}"
 
         findViewById<Button>(R.id.continuarPagoEfectivo).setOnClickListener {
-            val monto = etMonto.text.trim().toDoubleOrNull() ?: 0.0
-            if (monto <= 0) {
-                Toast.makeText(this, "Ingresá un monto mayor a 0", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             if (SocioRepository.registrarPago(dni, tipo, actividad.ifEmpty { null }, monto, "efectivo")) {
-                val base = "Medio: efectivo\nMonto: $$monto\nDNI: $dni"
+                val base = "Medio: efectivo\nMonto: ${Pagos1.formatearMonto(monto)}\nDNI: $dni"
                 startActivity(Intent(this, AvisoExito::class.java).apply {
-                    putExtra("tituloExito", "Pago exitoso!")
+                    putExtra("tituloExito", Pagos1.tituloExito(tipo))
                     putExtra(AvisoExito.EXTRA_DETALLE, if (actividad.isEmpty()) base else "$actividad\n$base")
                 })
             } else {

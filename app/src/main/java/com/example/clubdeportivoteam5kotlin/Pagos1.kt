@@ -38,12 +38,20 @@ class Pagos1 : AppCompatActivity() {
             }
             val socio = SocioRepository.buscarPorDni(dni)
             if (socio == null) {
-                Toast.makeText(this, "No hay socio activo con ese DNI", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No hay ninguna persona registrada con ese DNI", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             val tipoPago = if (spnActividad.selectedItemPosition == 0) "cuota" else "diaria"
             val nombreActividad = if (spnActividad.selectedItemPosition == 0) null
                 else ACTIVIDADES[spnActividad.selectedItemPosition - 1]
+            if (tipoPago == "cuota" && socio.tipo != "Socio") {  // REGLA
+                Toast.makeText(this, "Los no socios no pagan cuota mensual: elegí una actividad", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (tipoPago == "diaria" && socio.tipo != "No Socio") {  // REGLA
+                Toast.makeText(this, "Los socios solo pagan la cuota mensual", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (nombreActividad == "Musculación" && !socio.aptoFisico) {
                 Toast.makeText(this, "Musculación requiere apto físico", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -65,11 +73,11 @@ class Pagos1 : AppCompatActivity() {
                 R.id.radioQr -> Intent(this, PagosQR::class.java)
                 else -> null
             }!!
-            val monto = if (nombreActividad != null) PRECIOS[nombreActividad]!!.toDouble() else 0.0
+            val monto = if (nombreActividad != null) PRECIOS[nombreActividad]!!.toDouble() else PRECIO_CUOTA.toDouble()
             destino.apply {
                 putExtra(EXTRA_DNI, dni)
                 putExtra(EXTRA_TIPO, tipoPago)
-                putExtra(EXTRA_ACTIVIDAD, nombreActividad?.let { "$it: $$${PRECIOS[it]}" }.orEmpty())
+                putExtra(EXTRA_ACTIVIDAD, nombreActividad.orEmpty())
                 putExtra(EXTRA_MEDIO, medio)
                 putExtra(EXTRA_MONTO, monto)
             }
@@ -83,7 +91,11 @@ class Pagos1 : AppCompatActivity() {
         const val EXTRA_ACTIVIDAD = "EXTRA_ACTIVIDAD"
         const val EXTRA_MEDIO = "EXTRA_MEDIO"
         const val EXTRA_MONTO = "EXTRA_MONTO"
-        // precios fijos declarados R13 (legado FormActividadDiaria)
+        const val PRECIO_CUOTA = 50000
+        fun formatearMonto(monto: Double): String = "$" + monto.toLong()
+
+        fun tituloExito(tipo: String): String =
+            if (tipo == "cuota") "Cuota registrada!" else "Pago diario registrado!"
         private val PRECIOS = mapOf(
             "Musculación" to 10000,
             "Nutrición" to 20000,
@@ -94,6 +106,6 @@ class Pagos1 : AppCompatActivity() {
         )
         private val ACTIVIDADES = PRECIOS.keys.toList()
         private val ACTIVIDADES_CON_PRECIO =
-            listOf("Cuota mensual") + ACTIVIDADES.map { "$it - $${PRECIOS[it]}" }
+            listOf("Cuota mensual - $$PRECIO_CUOTA") + ACTIVIDADES.map { "$it - $${PRECIOS[it]}" }
     }
 }

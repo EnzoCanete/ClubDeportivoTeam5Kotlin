@@ -26,6 +26,7 @@ class PagosTarjeta : AppCompatActivity() {
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
         val tipo = intent.getStringExtra(Pagos1.EXTRA_TIPO).orEmpty()
         val medio = intent.getStringExtra(Pagos1.EXTRA_MEDIO).orEmpty()
+        val monto = intent.getDoubleExtra(Pagos1.EXTRA_MONTO, 0.0)
         val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
         val esCredito = intent.getStringExtra(EXTRA_TIPO_TARJETA) == "credito"
         val etNumero: InputConLabel = findViewById(R.id.pagosTarjetaNumero)
@@ -44,7 +45,7 @@ class PagosTarjeta : AppCompatActivity() {
                 Toast.makeText(this, "Tarjeta inválida: 16 dígitos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            var detalle = "Medio: débito\nDNI: $dni"
+            var detalle = "Medio: débito\nMonto: ${Pagos1.formatearMonto(monto)}\nDNI: $dni"
             if (esCredito) {
                 val cvc = etCvc.text.trim().filter { it.isDigit() }
                 if (cvc.length != 3) {
@@ -56,13 +57,11 @@ class PagosTarjeta : AppCompatActivity() {
                     Toast.makeText(this, "Cuotas válidas: 1, 3 o 6", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-                detalle = "Medio: crédito en $cuota cuotas\nDNI: $dni"
+                detalle = "Medio: crédito en $cuota cuotas\nMonto: ${Pagos1.formatearMonto(monto)}\nDNI: $dni"
             }
-            if (actividad.isNotEmpty()) detalle = "$actividad\n$detalle"
-            val monto = intent.getDoubleExtra(Pagos1.EXTRA_MONTO, 0.0)
             if (SocioRepository.registrarPago(dni, tipo, actividad.ifEmpty { null }, monto, medio)) {
                 startActivity(Intent(this, AvisoExito::class.java).apply {
-                    putExtra("tituloExito", "Pago exitoso!")
+                    putExtra("tituloExito", Pagos1.tituloExito(tipo))
                     putExtra(AvisoExito.EXTRA_DETALLE, detalle)
                 })
             } else {

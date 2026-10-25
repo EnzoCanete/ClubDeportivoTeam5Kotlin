@@ -73,6 +73,11 @@ object SocioRepository {
     }
 
     fun registrarPago(dni: String, tipo: String, actividad: String?, monto: Double, medio: String): Boolean {
+        if (monto <= 0) return false
+        val persona = buscarPorDni(dni) ?: return false
+        if (tipo == "cuota" && persona.tipo != "Socio") return false      // REGLA
+        if (tipo == "diaria" && persona.tipo != "No Socio") return false  // REGLA
+
         val db = helper.writableDatabase
         val fecha = hoy()
         db.beginTransaction()
@@ -85,12 +90,13 @@ object SocioRepository {
                 put("medio", medio)
                 put("fecha", fecha)
             }
-            val id = db.insert("pagos", null, pago)
-            if (id == -1L) { db.endTransaction(); return false }
+            if (db.insert("pagos", null, pago) == -1L) return false
 
             if (tipo == "cuota") {
+                // vigente: suma desde el vencimiento actual; vencida: suma desde hoy
+                val base = persona.fechaVencimiento?.takeIf { it >= fecha } ?: fecha
                 val cv = ContentValues().apply {
-                    put("fecha_vencimiento", sumar30Dias(fecha))
+                    put("fecha_vencimiento", sumar30Dias(base))
                 }
                 db.update("personas", cv, "dni = ?", arrayOf(dni))
             }

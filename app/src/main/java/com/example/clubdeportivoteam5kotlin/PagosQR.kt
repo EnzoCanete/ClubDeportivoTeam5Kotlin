@@ -3,7 +3,7 @@ package com.example.clubdeportivoteam5kotlin
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,17 +21,18 @@ class PagosQR : AppCompatActivity() {
         }
 
         val dni = intent.getStringExtra(Pagos1.EXTRA_DNI).orEmpty()
+        val tipo = intent.getStringExtra(Pagos1.EXTRA_TIPO).orEmpty()
+        val medio = intent.getStringExtra(Pagos1.EXTRA_MEDIO).orEmpty()
         val actividad = intent.getStringExtra(Pagos1.EXTRA_ACTIVIDAD).orEmpty()
-        val etMonto: InputConLabel = findViewById(R.id.pagosMontoQr)
+        val monto = intent.getDoubleExtra(Pagos1.EXTRA_MONTO, 0.0)
+        val tvMonto: TextView = findViewById(R.id.pagosMontoQr)
+        tvMonto.text = "Monto a pagar: ${Pagos1.formatearMonto(monto)}"
 
         findViewById<Button>(R.id.continuarPagoQr).setOnClickListener {
-            val monto = etMonto.text.trim().toDoubleOrNull() ?: 0.0
-            if (monto <= 0) {
-                Toast.makeText(this, "Ingresá un monto mayor a 0", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             startActivity(Intent(this, PagosEscanearQR::class.java).apply {
                 putExtra(Pagos1.EXTRA_DNI, dni)
+                putExtra(Pagos1.EXTRA_TIPO, tipo)
+                putExtra(Pagos1.EXTRA_MEDIO, medio)
                 putExtra(Pagos1.EXTRA_ACTIVIDAD, actividad)
                 putExtra(EXTRA_MONTO, monto)
             })
