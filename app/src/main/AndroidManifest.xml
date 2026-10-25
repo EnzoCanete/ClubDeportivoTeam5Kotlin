@@ -32,7 +32,6 @@
             android:name=".Persona2"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity android:name=".Vencimientos" />
         <activity android:name=".Asistencias1" />
         <activity android:name=".Carnet1" />
@@ -51,6 +50,10 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Asistencias3"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Consulta1"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/consulta1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_pantalla_pagos"
+    android:fillViewport="true"
+    tools:context=".Consulta1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="24dp">
+
+        <com.example.clubdeportivoteam5kotlin.FormCuerpoView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tituloText="Datos Persona">
+
+            <com.example.clubdeportivoteam5kotlin.FormSlot
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.example.clubdeportivoteam5kotlin.InputConLabel
+                    android:id="@+id/DniConsulta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="DNI:"
+                    app:inputType="number" />
+
+                <Button
+                    android:id="@+id/btnBuscarConsulta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Buscar"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre y Apellido:"
+                        android:textColor="@color/texto_color_secundario"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/lblNombreConsulta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="--"
+                        android:textColor="@color/texto_color_principal"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo:"
+                        android:textColor="@color/texto_color_secundario"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/lblTipoConsulta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="--"
+                        android:textColor="@color/texto_color_principal"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Correo:"
+                        android:textColor="@color/texto_color_secundario"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/lblCorreoConsulta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="--"
+                        android:textColor="@color/texto_color_principal"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Apto físico:"
+                        android:textColor="@color/texto_color_secundario"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/lblAptoConsulta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="--"
+                        android:textColor="@color/texto_color_principal"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vencimiento:"
+                        android:textColor="@color/texto_color_secundario"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/lblVencimientoConsulta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="--"
+                        android:textColor="@color/texto_color_principal"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/bordes" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Historial de pagos"
+                    android:textColor="@color/texto_color_principal"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lblHistorialConsulta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="@color/texto_color_principal"
+                    android:textSize="13sp" />
+
+            </com.example.clubdeportivoteam5kotlin.FormSlot>
+
+            <Button
+                android:id="@+id/btnRegresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                android:text="Regresar al Menú"
+                android:textColor="@color/texto_color_principal" />
+
+        </com.example.clubdeportivoteam5kotlin.FormCuerpoView>
+
+    </LinearLayout>
+</ScrollView>

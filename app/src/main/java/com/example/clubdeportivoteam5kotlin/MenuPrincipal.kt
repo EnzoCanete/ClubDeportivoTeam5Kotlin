@@ -23,6 +23,7 @@ class MenuPrincipal : AppCompatActivity() {
         val menuRegistrarAsistencia = findViewById<MenuItem>(R.id.menuRegistrarAsistencia)
         val menuRegistrarPersona = findViewById<MenuItem>(R.id.menuRegistrarPersonas)
         val menuCargarPago = findViewById<MenuItem>(R.id.menuCargarPago)
+        val menuConsultarDatos = findViewById<MenuItem>(R.id.menuConsultarDatos)
 
         val botonNotificaciones = findViewById<BotonIcono>(R.id.botonNotificaciones)
 
@@ -60,6 +61,12 @@ class MenuPrincipal : AppCompatActivity() {
         menuCargarPago.setOnMenuClickListener {
             startActivity(
                 Intent(this, Pagos1::class.java)
+            )
+        }
+
+        menuConsultarDatos.setOnMenuClickListener {
+            startActivity(
+                Intent(this, Consulta1::class.java)
             )
         }
     }
