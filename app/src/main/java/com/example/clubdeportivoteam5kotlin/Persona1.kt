@@ -28,13 +28,18 @@ class Persona1 : AppCompatActivity() {
             when {
                 nombre.isBlank() || apellido.isBlank() || dni.isBlank() || correo.isBlank() ->
                     Toast.makeText(this, "Complete nombre, apellido, DNI y correo", Toast.LENGTH_SHORT).show()
-                !dni.matches(Regex("^\\d{7,8}$")) ->
+
+                // Integrando la validación centralizada F5 para DNI (7 u 8 dígitos)
+                !Validaciones.esDniValido(dni) ->
                     Toast.makeText(this, "DNI inválido: 7 u 8 dígitos numéricos", Toast.LENGTH_SHORT).show()
+
                 // Apto obligatorio simple (sin foto ni fecha, fuera de alcance de HU-01)
                 campoAptoFisico.text.isBlank() ->
                     Toast.makeText(this, "El apto físico es obligatorio", Toast.LENGTH_SHORT).show()
+
                 SocioRepository.buscarPorDni(dni) != null ->
                     Toast.makeText(this, "Ya existe una persona con ese DNI", Toast.LENGTH_SHORT).show()
+
                 else -> startActivity(
                     Intent(this, Persona2::class.java)
                         .putExtra(EXTRA_NOMBRE, nombre)

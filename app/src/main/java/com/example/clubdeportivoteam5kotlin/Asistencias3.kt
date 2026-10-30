@@ -31,13 +31,19 @@ class Asistencias3 : AppCompatActivity() {
         val btnConfasistencia = findViewById<Button>(R.id.btnConfasist)
         btnConfasistencia.setOnClickListener {
             Toast.makeText(this, "Asistencia confirmada", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, MenuPrincipal::class.java))
+
+            // Navegación limpia F5: limpiamos el stack y volvemos al Menú Principal
+            val intent = Intent(this, MenuPrincipal::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+            startActivity(intent)
+            finish()
         }
 
         val btnRegresar3 = findViewById<Button>(R.id.btnregasist3)
         btnRegresar3.setOnClickListener {
-            val intent = Intent (this, MenuPrincipal::class.java)
-            startActivity(intent)
+            // Cierra la pantalla actual y regresa limpiamente a la anterior sin acumular en la pila
+            finish()
         }
     }
 }
