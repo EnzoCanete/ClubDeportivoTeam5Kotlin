@@ -31,14 +31,29 @@ class Asistencias2 : AppCompatActivity() {
         val btnBuscarasist = findViewById<Button>(R.id.btnBuscarasist)
         btnBuscarasist.setOnClickListener {
             val dni = dniInput.text.toString().trim()
+
+            val persona = SocioRepository.buscarPorDni(dni)
+
             when {
-                dni.isEmpty() -> Toast.makeText(this, "Ingresá un DNI", Toast.LENGTH_SHORT).show()
-                !dni.matches(Regex("^\\d{7,8}$")) -> Toast.makeText(this, "Formato de DNI inválido", Toast.LENGTH_SHORT).show()
-                SocioRepository.buscarPorDni(dni) == null -> Toast.makeText(this, "No hay registro con ese DNI", Toast.LENGTH_SHORT).show()
-                else -> startActivity(Intent(this, Asistencias3::class.java)
-                    .putExtra(EXTRA_DNI, dni)
-                    .putExtra(EXTRA_TIPO, tipo))
+                dni.isEmpty() ->
+                    Toast.makeText(this, "Ingresá un DNI", Toast.LENGTH_SHORT).show()
+
+                !dni.matches(Regex("^\\d{7,8}$")) ->
+                    Toast.makeText(this, "Formato de DNI inválido", Toast.LENGTH_SHORT).show()
+
+                persona == null ->
+                    Toast.makeText(this, "No hay registro con ese DNI", Toast.LENGTH_SHORT).show()
+
+                persona.tipo != tipo ->
+                    Toast.makeText(this, "La persona no pertenece al tipo seleccionado", Toast.LENGTH_SHORT).show()
+
+                else -> {
+                    startActivity(
+                        Intent(this, Asistencias3::class.java)
+                            .putExtra(EXTRA_DNI, dni)
+                            .putExtra(EXTRA_TIPO, tipo)
+                    )
+                }
             }
-        }
-    }
+        }    }
 }

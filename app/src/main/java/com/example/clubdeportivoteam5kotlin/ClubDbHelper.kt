@@ -14,7 +14,7 @@ class ClubDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 
                 nombre            TEXT NOT NULL,
                 apellido          TEXT NOT NULL,
                 correo            TEXT NOT NULL,
-                tipo              TEXT NOT NULL CHECK(tipo IN ('Socio','No Socio')),
+                tipo              TEXT NOT NULL CHECK(tipo IN ('Socio','No Socio','Profesor')),
                 apto              INTEGER NOT NULL,
                 fecha_vencimiento TEXT
             )
@@ -42,6 +42,7 @@ class ClubDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 
         db.execSQL("INSERT INTO personas VALUES ('28998877','Marta','Rios','marta.rios@club.com','Socio',1,'2026-11-30')")
         db.execSQL("INSERT INTO personas VALUES ('34123456','Pedro','Diaz','pedro.diaz@club.com','Socio',1,'2026-08-15')")
         db.execSQL("INSERT INTO personas VALUES ('32456789','Luis','Sosa','luis.sosa@club.com','No Socio',1,NULL)")
+        db.execSQL("INSERT INTO personas VALUES ('45897070','Enrique','Rodriguez','enrique.rodriguez@club.com','Profesor',1,NULL)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

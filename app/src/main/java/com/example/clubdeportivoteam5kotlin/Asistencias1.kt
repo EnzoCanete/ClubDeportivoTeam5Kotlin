@@ -28,7 +28,7 @@ class Asistencias1 : AppCompatActivity() {
         val itemAlumno = findViewById<MenuItem>(R.id.asistAlumno)
         itemAlumno.setOnClickListener {
             val intent = Intent (this, Asistencias2::class.java)
-            intent.putExtra(Asistencias2.EXTRA_TIPO, "Alumno")
+            intent.putExtra(Asistencias2.EXTRA_TIPO, "Socio")
             startActivity(intent)
         }
     }
