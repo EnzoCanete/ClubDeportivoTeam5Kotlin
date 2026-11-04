@@ -20,20 +20,28 @@ class Consulta1 : AppCompatActivity() {
         val lblHistorial: TextView = findViewById(R.id.lblHistorialConsulta)
         val btnRegresar = findViewById<Button>(R.id.btnRegresar)
 
+        fun limpiarResultado() {
+            lblNombre.text = "--"
+            lblTipo.text = "--"
+            lblCorreo.text = "--"
+            lblApto.text = "--"
+            lblVenc.text = "--"
+            lblHistorial.text = "--"
+        }
+
         findViewById<Button>(R.id.btnBuscarConsulta).setOnClickListener {
+            limpiarResultado()
             val dni = dniInput.text.trim()
             if (dni.isEmpty()) {
                 Toast.makeText(this, "Ingresá un DNI", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            if (!Validaciones.esDniValido(dni)) {
+                Toast.makeText(this, "DNI inválido: 7 u 8 dígitos numéricos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val persona = SocioRepository.buscarPorDni(dni)
             if (persona == null) {
-                lblNombre.text = "--"
-                lblTipo.text = "--"
-                lblCorreo.text = "--"
-                lblApto.text = "--"
-                lblVenc.text = "--"
-                lblHistorial.text = "--"
                 Toast.makeText(this, "No hay ninguna persona registrada con ese DNI", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }

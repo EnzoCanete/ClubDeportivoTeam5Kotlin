@@ -29,6 +29,11 @@ class Carnet1 : AppCompatActivity() {
                 Toast.makeText(this, "Ingresá un DNI", Toast.LENGTH_SHORT).show()
                 return false
             }
+            if (!Validaciones.esDniValido(dni)) {
+                emitidoDni = null
+                Toast.makeText(this, "DNI inválido: 7 u 8 dígitos numéricos", Toast.LENGTH_SHORT).show()
+                return false
+            }
             val socio = SocioRepository.buscarPorDni(dni)
             if (socio == null) {
                 emitidoDni = null

@@ -38,9 +38,10 @@ class ClubDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 
     }
 
     private fun seed(db: SQLiteDatabase) {
-        db.execSQL("INSERT INTO personas VALUES ('30111222','Ana','Gomez','ana.gomez@club.com','Socio',1,'2026-10-31')")
-        db.execSQL("INSERT INTO personas VALUES ('28998877','Marta','Rios','marta.rios@club.com','Socio',1,'2026-11-30')")
-        db.execSQL("INSERT INTO personas VALUES ('34123456','Pedro','Diaz','pedro.diaz@club.com','Socio',1,'2026-08-15')")
+        // Fechas relativas al primer arranque: la demo no depende del día de instalación.
+        db.execSQL("INSERT INTO personas VALUES ('30111222','Ana','Gomez','ana.gomez@club.com','Socio',1,date('now','+7 day'))")
+        db.execSQL("INSERT INTO personas VALUES ('28998877','Marta','Rios','marta.rios@club.com','Socio',1,date('now','+40 day'))")
+        db.execSQL("INSERT INTO personas VALUES ('34123456','Pedro','Diaz','pedro.diaz@club.com','Socio',1,date('now','-20 day'))")
         db.execSQL("INSERT INTO personas VALUES ('32456789','Luis','Sosa','luis.sosa@club.com','No Socio',1,NULL)")
         db.execSQL("INSERT INTO personas VALUES ('45897070','Enrique','Rodriguez','enrique.rodriguez@club.com','Profesor',1,NULL)")
     }

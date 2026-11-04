@@ -33,6 +33,12 @@ class Persona1 : AppCompatActivity() {
                 !Validaciones.esDniValido(dni) ->
                     Toast.makeText(this, "DNI inválido: 7 u 8 dígitos numéricos", Toast.LENGTH_SHORT).show()
 
+                !Validaciones.esNombreValido(nombre) || !Validaciones.esNombreValido(apellido) ->
+                    Toast.makeText(this, "Nombre y apellido no pueden contener números", Toast.LENGTH_SHORT).show()
+
+                !Validaciones.esCorreoValido(correo) ->
+                    Toast.makeText(this, "Correo inválido", Toast.LENGTH_SHORT).show()
+
                 // Apto obligatorio simple (sin foto ni fecha, fuera de alcance de HU-01)
                 campoAptoFisico.text.isBlank() ->
                     Toast.makeText(this, "El apto físico es obligatorio", Toast.LENGTH_SHORT).show()

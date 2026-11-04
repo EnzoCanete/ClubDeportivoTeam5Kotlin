@@ -36,6 +36,10 @@ class Pagos1 : AppCompatActivity() {
                 Toast.makeText(this, "Ingresá un DNI", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            if (!Validaciones.esDniValido(dni)) {
+                Toast.makeText(this, "DNI inválido: 7 u 8 dígitos numéricos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val socio = SocioRepository.buscarPorDni(dni)
             if (socio == null) {
                 Toast.makeText(this, "No hay ninguna persona registrada con ese DNI", Toast.LENGTH_SHORT).show()

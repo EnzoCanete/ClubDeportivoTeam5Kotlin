@@ -18,6 +18,11 @@ object Validaciones {
         return regex.matches(correo.trim())
     }
 
+    fun esNombreValido(nombre: String?): Boolean {
+        if (nombre.isNullOrBlank()) return false
+        return nombre.trim().none { it.isDigit() }
+    }
+
     fun esMontoValido(montoStr: String?): Boolean {
         val monto = montoStr?.toDoubleOrNull()
         return monto != null && monto > 0.0

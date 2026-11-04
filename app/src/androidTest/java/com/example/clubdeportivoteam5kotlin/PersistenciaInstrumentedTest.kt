@@ -7,6 +7,9 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 @RunWith(AndroidJUnit4::class)
 class PersistenciaInstrumentedTest {
@@ -52,12 +55,22 @@ class PersistenciaInstrumentedTest {
     }
 
     @Test
-    fun cuotaExtiencioVencimiento30DiasYPagoQuedaPersistido() {
-        assertTrue(SocioRepository.registrarPago("30111222", "cuota", null, 0.0, "efectivo"))
+    fun cuotaExtiendeVencimiento30DiasYPagoQuedaPersistido() {
+        val antes = SocioRepository.buscarPorDni("30111222")!!.fechaVencimiento!!
+        assertTrue(SocioRepository.registrarPago("30111222", "cuota", null, 50000.0, "efectivo"))
         val socio = SocioRepository.buscarPorDni("30111222")!!
-        assertTrue("Vencimiento debería ser ~30 días posterior", socio.fechaVencimiento!! > "2026-10-31")
+        assertEquals(sumar30Dias(antes), socio.fechaVencimiento)
         assertTrue(socio.cuotaAlDia)
         assertEquals(1, SocioRepository.pagosDe("30111222").size)
+    }
+
+    private fun sumar30Dias(fecha: String): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        val cal = Calendar.getInstance().apply {
+            time = sdf.parse(fecha)!!
+            add(Calendar.DAY_OF_MONTH, 30)
+        }
+        return sdf.format(cal.time)
     }
 
     @Test
@@ -109,7 +122,7 @@ class PersistenciaInstrumentedTest {
 
     @Test
     fun pagoSobreviveTrasCerrarYReabrir() {
-        SocioRepository.registrarPago("34123456", "cuota", null, 0.0, "debito")
+        SocioRepository.registrarPago("34123456", "cuota", null, 50000.0, "debito")
         assertEquals(1, SocioRepository.pagosDe("34123456").size)
 
         helper.close()
